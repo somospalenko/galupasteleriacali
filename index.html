@@ -149,11 +149,112 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--lilac);border-co
 <div id="root"></div>
 
 <script>
-/* ============ STORAGE ============ */
-const STORAGE_KEY = 'galu_state_v1';
+/* ============ CAPA CENTRALIZADA DE ALMACENAMIENTO (DB) ============
+   Diseñada para poder migrarse después a un backend real (Supabase/Firebase/Postgres)
+   sin tocar el resto de la app: toda lectura/escritura pasa por DB.load()/DB.save().
+   - localStorage es la fuente de verdad confiable (funciona siempre, incluso fuera de Claude.ai).
+   - window.storage (si existe, ej. dentro de Claude.ai) se usa como respaldo adicional "best effort".
+*/
+const DB = {
+  KEY_CURRENT: 'galu_erp_v2',
+  KEY_LEGACY: 'galu_state_v1', // clave usada por una versión anterior — se migra si se encuentra
+  hasCloud: (typeof window !== 'undefined' && !!window.storage),
+
+  readLocal(key){
+    try{ const raw = localStorage.getItem(key); return raw? JSON.parse(raw): null; }
+    catch(e){ console.error('DB.readLocal error', e); return null; }
+  },
+  writeLocal(key, obj){
+    try{ localStorage.setItem(key, JSON.stringify(obj)); return true; }
+    catch(e){ console.error('DB.writeLocal error', e); return false; }
+  },
+  async readCloud(key){
+    if(!this.hasCloud) return null;
+    try{ const res = await window.storage.get(key, false); return res && res.value ? JSON.parse(res.value) : null; }
+    catch(e){ return null; }
+  },
+  async writeCloud(key, obj){
+    if(!this.hasCloud) return false;
+    try{ await window.storage.set(key, JSON.stringify(obj), false); return true; }
+    catch(e){ return false; }
+  },
+
+  // Carga: localStorage actual -> nube actual -> localStorage antiguo -> nube antigua -> null
+  async load(){
+    let data = this.readLocal(this.KEY_CURRENT);
+    if(data) return data;
+    data = await this.readCloud(this.KEY_CURRENT);
+    if(data) return data;
+    data = this.readLocal(this.KEY_LEGACY);
+    if(data) return data;
+    data = await this.readCloud(this.KEY_LEGACY);
+    if(data) return data;
+    return null;
+  },
+
+  async save(obj){
+    const okLocal = this.writeLocal(this.KEY_CURRENT, obj);
+    const okCloud = await this.writeCloud(this.KEY_CURRENT, obj);
+    return okLocal || okCloud;
+  }
+};
+
+const ESTADOS_PEDIDO = ['Solicitud','Cotización','Confirmado','En producción','Listo','Entregado','Finalizado'];
+
 let SAVE_TIMER = null;
 let STATE = null;
 
+function logChange(mensaje){
+  if(!STATE.auditLog) STATE.auditLog = [];
+  STATE.auditLog.unshift({id: uid('log'), fecha: new Date().toISOString(), mensaje});
+  if(STATE.auditLog.length > 300) STATE.auditLog.length = 300; // limitar tamaño
+}
+
+async function loadState(){
+  const loaded = await DB.load();
+  if(loaded){
+    STATE = loaded;
+    // asegura que estados guardados antes de esta versión tengan los campos nuevos
+    if(!STATE.auditLog) STATE.auditLog = [];
+    if(!STATE.config) STATE.config = {pedidosPromedioMes:30};
+    if(!STATE.clientes) STATE.clientes = [];
+    if(!STATE.facturas) STATE.facturas = [];
+    if(!STATE.config.facturaCounter) STATE.config.facturaCounter = 1;
+    if(STATE.config.impuestoPct===undefined) STATE.config.impuestoPct = 0;
+    if(!STATE.config.negocio) STATE.config.negocio = {
+      nombre:'Galú Pastelería', nit:'', telefono:'310 353 0008', correo:'',
+      direccion:'', redes:'@galu_pasteleria_col', ciudad:'Cali, Valle del Cauca'
+    };
+    STATE.ventas.forEach(v=>{ if(!v.estado || !ESTADOS_PEDIDO.includes(v.estado)) v.estado = 'Confirmado'; });
+    // migración: pedidos antiguos guardaban cliente como texto libre en vez de clienteId
+    STATE.ventas.forEach(v=>{
+      if(!v.clienteId && v.cliente){
+        let existente = STATE.clientes.find(cl=> cl.nombre===v.cliente);
+        if(!existente){
+          existente = {id:uid('cl'), nombre:v.cliente, documento:'', telefono:v.telefono||'', correo:'', direccion:'', observaciones:''};
+          STATE.clientes.push(existente);
+        }
+        v.clienteId = existente.id;
+        delete v.cliente; delete v.telefono;
+      }
+    });
+    await persist(true);
+    return;
+  }
+  STATE = seedState();
+  STATE.auditLog = [{id: uid('log'), fecha: new Date().toISOString(), mensaje:'Sistema inicializado con datos migrados desde el Excel de costeo.'}];
+  await persist(true);
+}
+
+async function persist(immediate){
+  clearTimeout(SAVE_TIMER);
+  const doSave = async ()=>{
+    const ok = await DB.save(STATE);
+    if(!ok) showToast('⚠️ No se pudo guardar el cambio. Revisa el espacio de almacenamiento del navegador.');
+  };
+  if(immediate){ await doSave(); } else { SAVE_TIMER = setTimeout(doSave, 250); }
+}
+/* ============ DATOS SEMILLA (migrados del Excel) ============ */
 function seedState(){
   const insumos = [
     {id:'i1',nombre:'Mantequilla Astra (T)',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:6400,proveedor:'La Mansión de la Repostería',perecedero:true,stock:500},
@@ -290,32 +391,19 @@ function seedState(){
 
   return {
     insumos, equipos, manoObraTipos, productos,
-    compras:[], producciones:[], ventas:[], mermas:[],
+    compras:[], producciones:[], ventas:[], mermas:[], clientes:[], facturas:[],
     inventarioProductoTerminado:{}, // varianteId -> cantidad
-    config:{pedidosPromedioMes:30},
+    config:{
+      pedidosPromedioMes:30,
+      facturaCounter:1,
+      impuestoPct:0,
+      negocio:{
+        nombre:'Galú Pastelería', nit:'', telefono:'310 353 0008', correo:'',
+        direccion:'', redes:'@galu_pasteleria_col', ciudad:'Cali, Valle del Cauca'
+      }
+    },
     _seeded:true
   };
-}
-
-async function loadState(){
-  try{
-    const res = await window.storage.get(STORAGE_KEY, false);
-    if(res && res.value){
-      STATE = JSON.parse(res.value);
-      return;
-    }
-  }catch(e){ /* not found */ }
-  STATE = seedState();
-  await persist(true);
-}
-
-async function persist(immediate){
-  clearTimeout(SAVE_TIMER);
-  const doSave = async ()=>{
-    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(STATE), false); }
-    catch(e){ console.error('Error guardando', e); showToast('⚠️ No se pudo guardar. Intenta de nuevo.'); }
-  };
-  if(immediate){ await doSave(); } else { SAVE_TIMER = setTimeout(doSave, 250); }
 }
 
 /* ============ HELPERS ============ */
@@ -374,15 +462,19 @@ let MODAL = null; // {type, data}
 
 const NAV = [
   {id:'dashboard', label:'Dashboard', ic:'🏠'},
+  {id:'clientes', label:'Clientes', ic:'👤'},
   {id:'insumos', label:'Insumos', ic:'🧂'},
   {id:'compras', label:'Compras', ic:'🧾'},
   {id:'recetas', label:'Recetas y Costeo', ic:'🧮'},
   {id:'produccion', label:'Producción', ic:'🍰'},
   {id:'inventario', label:'Inventario', ic:'📦'},
-  {id:'ventas', label:'Ventas', ic:'💌'},
+  {id:'ventas', label:'Pedidos', ic:'💌'},
+  {id:'facturacion', label:'Facturación', ic:'📄'},
   {id:'mermas', label:'Mermas', ic:'🗑️'},
   {id:'ajustes', label:'Equipos y M. de obra', ic:'⚙️'},
+  {id:'negocio', label:'Configuración del negocio', ic:'🏪'},
   {id:'reportes', label:'Reportes', ic:'📊'},
+  {id:'historial', label:'Historial', ic:'🕒'},
 ];
 
 function render(){
@@ -417,15 +509,19 @@ function render(){
   const c = document.getElementById('content');
   ({
     dashboard: renderDashboard,
+    clientes: renderClientes,
     insumos: renderInsumos,
     compras: renderCompras,
     recetas: renderRecetas,
     produccion: renderProduccion,
     inventario: renderInventario,
     ventas: renderVentas,
+    facturacion: renderFacturacion,
     mermas: renderMermas,
     ajustes: renderAjustes,
+    negocio: renderNegocio,
     reportes: renderReportes,
+    historial: renderHistorial,
   })[ROUTE](c);
   wireModal();
 }
@@ -433,17 +529,33 @@ function render(){
 function topbarSub(route){
   const subs = {
     dashboard:'Resumen general del negocio',
+    clientes:'Base de datos de clientes — se alimenta de tus pedidos y facturas',
     insumos:'Catálogo de materia prima, desmolde y empaque',
     compras:'Registra ingresos de insumos — actualiza stock y costos',
     recetas:'Cada producto y su costeo, recalculado en vivo',
     produccion:'Registra lo que horneas — descuenta insumos, suma inventario',
     inventario:'Stock actual de producto terminado',
-    ventas:'Pedidos, clientes, anticipos y estado de pago',
+    ventas:'Pedidos, clientes, estado del pedido y anticipos',
+    facturacion:'Comprobantes de venta conectados a clientes y pedidos, exportables a PDF',
     mermas:'Pérdidas de insumos o productos',
     ajustes:'Equipos (depreciación) y tarifas de mano de obra',
+    negocio:'Datos de tu pastelería para las facturas — nombre, contacto, impuestos',
     reportes:'Rentabilidad y desempeño del negocio',
+    historial:'Registro de cambios importantes — precios, costos y movimientos',
   };
   return subs[route]||'';
+}
+
+/* ============ HISTORIAL / AUDITORÍA ============ */
+function renderHistorial(c){
+  const log = STATE.auditLog || [];
+  c.innerHTML = `
+    <div class="card small" style="margin-bottom:16px;">Aquí quedan registrados los cambios de precios, costos y tarifas, para que puedas entender por qué varió un margen o un costeo con el tiempo.</div>
+    ${log.length===0? `<div class="card"><div class="empty"><div class="big">🕒</div>Aún no hay cambios registrados</div></div>` :
+    `<div class="tbl-wrap"><table><thead><tr><th style="width:170px;">Fecha</th><th>Evento</th></tr></thead><tbody>
+      ${log.map(l=>`<tr><td class="small">${new Date(l.fecha).toLocaleString('es-CO')}</td><td>${l.mensaje}</td></tr>`).join('')}
+    </tbody></table></div>`}
+  `;
 }
 
 /* ============ DASHBOARD ============ */
@@ -490,6 +602,61 @@ function renderDashboard(c){
   `;
 }
 
+/* ============ CLIENTES (CRM) ============ */
+function clienteById(id){ return STATE.clientes.find(x=>x.id===id); }
+
+function clienteStats(clienteId){
+  const pedidos = STATE.ventas.filter(v=> v.clienteId===clienteId);
+  const totalGastado = pedidos.reduce((s,v)=> s + v.items.reduce((s2,it)=>s2+it.cantidad*it.precioUnit,0) - (v.descuento||0), 0);
+  const numCompras = pedidos.length;
+  const ticketProm = numCompras? totalGastado/numCompras : 0;
+  const fechas = pedidos.map(v=>v.fechaPedido).filter(Boolean).sort();
+  const primera = fechas[0]||null;
+  const ultima = fechas[fechas.length-1]||null;
+  let inactivo = false;
+  if(ultima){ const dias = (Date.now() - new Date(ultima).getTime())/86400000; inactivo = dias > 90; }
+  return {numCompras, totalGastado, ticketProm, primera, ultima, inactivo};
+}
+
+function renderClientes(c){
+  const clientes = [...STATE.clientes].sort((a,b)=> a.nombre.localeCompare(b.nombre));
+  const nuevosMes = clientes.filter(cl=>{ const s=clienteStats(cl.id); return s.primera && s.primera.slice(0,7)===todayISO().slice(0,7); }).length;
+  const recurrentes = clientes.filter(cl=> clienteStats(cl.id).numCompras>1).length;
+  const inactivos = clientes.filter(cl=> clienteStats(cl.id).inactivo).length;
+
+  c.innerHTML = `
+    <div class="grid g4" style="margin-bottom:20px;">
+      <div class="card stat"><div class="lbl">Total clientes</div><div class="val">${clientes.length}</div></div>
+      <div class="card stat"><div class="lbl">Nuevos este mes</div><div class="val mag">${nuevosMes}</div></div>
+      <div class="card stat"><div class="lbl">Recurrentes</div><div class="val blue">${recurrentes}</div></div>
+      <div class="card stat"><div class="lbl">Inactivos (+90 días)</div><div class="val yellow">${inactivos}</div></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+      <button class="btn btn-primary" id="btn-add-cliente">+ Nuevo cliente</button>
+    </div>
+    <div class="tbl-wrap"><table><thead><tr>
+      <th>Nombre</th><th>Documento</th><th>Teléfono</th><th>Correo</th><th>Compras</th><th>Total gastado</th><th>Ticket prom.</th><th>Última compra</th><th></th>
+    </tr></thead><tbody>
+    ${clientes.map(cl=>{
+      const s = clienteStats(cl.id);
+      return `<tr>
+        <td><strong>${cl.nombre}</strong></td>
+        <td>${cl.documento||'—'}</td>
+        <td>${cl.telefono||'—'}</td>
+        <td>${cl.correo||'—'}</td>
+        <td>${s.numCompras}</td>
+        <td>${fmt(s.totalGastado)}</td>
+        <td>${fmt(s.ticketProm)}</td>
+        <td>${s.ultima? s.ultima : '—'} ${s.inactivo? '<span class="pill warn">inactivo</span>':''}</td>
+        <td><button class="btn btn-secondary btn-sm" data-edit-cliente="${cl.id}">Editar</button></td>
+      </tr>`;
+    }).join('') || `<tr><td colspan="9"><div class="empty"><div class="big">👤</div>Aún no tienes clientes registrados — se crean aquí o directamente al hacer un pedido/factura</div></td></tr>`}
+    </tbody></table></div>
+  `;
+  document.getElementById('btn-add-cliente').onclick = ()=>{ MODAL={type:'cliente', data:null}; render(); };
+  document.querySelectorAll('[data-edit-cliente]').forEach(b=> b.onclick=()=>{ MODAL={type:'cliente', data:clienteById(b.dataset.editCliente)}; render(); });
+}
+
 /* ============ INSUMOS ============ */
 const UNIDADES = ['g','kg','ml','l','unid','m'];
 const CATEGORIAS_INSUMO = ['MATERIA PRIMA','DESMOLDE','EMPAQUE'];
@@ -531,7 +698,12 @@ function renderInsumos(c){
   document.querySelectorAll('[data-in-nombre]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inNombre).nombre=e.target.value; persist(); });
   document.querySelectorAll('[data-in-cant]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inCant).cantCompra=Number(e.target.value)||1; persist(); render(); });
   document.querySelectorAll('[data-in-unidad]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inUnidad).unidad=e.target.value; persist(); render(); });
-  document.querySelectorAll('[data-in-precio]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inPrecio).precioCompra=Number(e.target.value)||0; persist(); render(); });
+  document.querySelectorAll('[data-in-precio]').forEach(inp=> inp.onchange=(e)=>{
+    const ins = insumoById(inp.dataset.inPrecio); const antes = ins.precioCompra;
+    ins.precioCompra=Number(e.target.value)||0;
+    if(antes !== ins.precioCompra) logChange(`Se modificó el precio de compra de "${ins.nombre}" de ${fmt(antes)} a ${fmt(ins.precioCompra)}.`);
+    persist(); render();
+  });
   document.querySelectorAll('[data-in-stock]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inStock).stock=Number(e.target.value)||0; persist(); render(); });
   document.querySelectorAll('[data-in-prov]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inProv).proveedor=e.target.value; persist(); });
   document.querySelectorAll('[data-in-perec]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inPerec).perecedero=e.target.checked; persist(); });
@@ -704,28 +876,35 @@ function renderInventarioProductos(el){
 
 /* ============ VENTAS ============ */
 let VENTA_DRAFT_ITEMS = [];
+let FACTURA_DRAFT_ITEMS = [];
 function renderVentas(c){
   const ventas = [...STATE.ventas].sort((a,b)=> (b.fechaPedido||'').localeCompare(a.fechaPedido||''));
+  const estadoPill = (e)=>{
+    if(e==='Entregado'||e==='Finalizado') return 'ok';
+    if(e==='Solicitud'||e==='Cotización') return 'warn';
+    return 'de';
+  };
   c.innerHTML = `
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-      <button class="btn btn-primary" id="btn-add-venta">+ Nueva venta</button>
+      <button class="btn btn-primary" id="btn-add-venta">+ Nuevo pedido</button>
     </div>
     <div class="tbl-wrap"><table><thead><tr>
       <th>Cliente</th><th>Pedido</th><th>Entrega</th><th>Canal</th><th>Total</th><th>Anticipo</th><th>Estado</th><th></th>
     </tr></thead><tbody>
     ${ventas.map(v=>{
       const total = v.items.reduce((s,it)=>s+it.cantidad*it.precioUnit,0) - (v.descuento||0);
+      const cl = clienteById(v.clienteId);
       return `<tr>
-        <td><strong>${v.cliente}</strong><div class="small">${v.telefono||''}</div></td>
+        <td><strong>${cl?cl.nombre:'—'}</strong><div class="small">${cl?.telefono||''}</div></td>
         <td>${v.fechaPedido||'—'}</td>
         <td>${v.fechaEntrega||'—'}</td>
         <td>${v.canal}</td>
         <td>${fmt(total)}</td>
         <td>${fmt(v.anticipo||0)}</td>
-        <td><span class="pill ${v.estado==='Entregado'?'ok':v.estado==='Pagado'?'ok':'warn'}">${v.estado}</span></td>
+        <td><span class="pill ${estadoPill(v.estado)}">${v.estado}</span></td>
         <td><button class="btn btn-secondary btn-sm" data-edit-venta="${v.id}">Ver</button></td>
       </tr>`;
-    }).join('') || `<tr><td colspan="8"><div class="empty"><div class="big">💌</div>Aún no has registrado ventas</div></td></tr>`}
+    }).join('') || `<tr><td colspan="8"><div class="empty"><div class="big">💌</div>Aún no has registrado pedidos</div></td></tr>`}
     </tbody></table></div>
   `;
   document.getElementById('btn-add-venta').onclick = ()=>{ VENTA_DRAFT_ITEMS=[]; MODAL={type:'venta', data:null}; render(); };
@@ -796,10 +975,20 @@ function renderAjustes(c){
     </tbody></table></div>
   `;
   document.getElementById('pedidos-mes').onchange = (e)=>{ STATE.config.pedidosPromedioMes = Number(e.target.value)||1; persist(); render(); };
-  document.querySelectorAll('[data-eq-precio]').forEach(inp=> inp.onchange=(e)=>{ equipoById(inp.dataset.eqPrecio).precioCompra = Number(e.target.value)||0; persist(); render(); });
+  document.querySelectorAll('[data-eq-precio]').forEach(inp=> inp.onchange=(e)=>{
+    const eq = equipoById(inp.dataset.eqPrecio); const antes=eq.precioCompra;
+    eq.precioCompra = Number(e.target.value)||0;
+    if(antes!==eq.precioCompra) logChange(`Se modificó el precio de compra del equipo "${eq.nombre}" de ${fmt(antes)} a ${fmt(eq.precioCompra)} — impacta la depreciación y el costeo.`);
+    persist(); render();
+  });
   document.querySelectorAll('[data-eq-vida]').forEach(inp=> inp.onchange=(e)=>{ equipoById(inp.dataset.eqVida).vidaUtilMeses = Number(e.target.value)||1; persist(); render(); });
   document.querySelectorAll('[data-eq-pct]').forEach(inp=> inp.onchange=(e)=>{ equipoById(inp.dataset.eqPct).pctUso = Number(e.target.value)||0; persist(); render(); });
-  document.querySelectorAll('[data-mo-tarifa]').forEach(inp=> inp.onchange=(e)=>{ manoObraById(inp.dataset.moTarifa).tarifa = Number(e.target.value)||0; persist(); render(); });
+  document.querySelectorAll('[data-mo-tarifa]').forEach(inp=> inp.onchange=(e)=>{
+    const mo = manoObraById(inp.dataset.moTarifa); const antes=mo.tarifa;
+    mo.tarifa = Number(e.target.value)||0;
+    if(antes!==mo.tarifa) logChange(`Se modificó la tarifa de mano de obra "${mo.nombre}" de ${fmt(antes)} a ${fmt(mo.tarifa)}.`);
+    persist(); render();
+  });
   document.querySelectorAll('[data-del-eq]').forEach(b=> b.onclick=()=>{ STATE.equipos = STATE.equipos.filter(x=>x.id!==b.dataset.delEq); persist(); render(); });
   document.getElementById('btn-add-eq').onclick = ()=>{
     STATE.equipos.push({id:uid('e'),nombre:'Nuevo equipo',precioCompra:0,vidaUtilMeses:12,pctUso:1,obs:''});
@@ -857,6 +1046,8 @@ function renderModal(){
   if(m.type==='produccion') body = modalProduccion(m.data);
   if(m.type==='venta') body = modalVenta(m.data);
   if(m.type==='merma') body = modalMerma(m.data);
+  if(m.type==='cliente') body = modalCliente(m.data);
+  if(m.type==='factura') body = modalFactura(m.data);
   return `<div class="modal-bg" id="modal-bg"><div class="modal">${body}</div></div>`;
 }
 function closeModal(){ MODAL=null; render(); }
@@ -991,12 +1182,14 @@ function modalVenta(data){
     let nombre='—'; opts.forEach(({producto,variante})=>{ if(variante.id===it.varianteId) nombre=producto.nombre+' — '+variante.nombre; });
     return `<div class="chip">${nombre} × ${it.cantidad} (${fmt(it.precioUnit)} c/u)<button data-rm-item="${idx}">✕</button></div>`;
   }).join('') || `<div class="small">Sin productos agregados aún.</div>`;
+  const clienteOpts = STATE.clientes.map(cl=>`<option value="${cl.id}" ${data?.clienteId===cl.id?'selected':''}>${cl.nombre}</option>`).join('');
 
   return `
-    <h3>${editing?'Editar venta':'Nueva venta'}</h3>
+    <h3>${editing?'Editar pedido':'Nuevo pedido'}</h3>
     <div class="formgrid">
-      <div><label>Cliente</label><input type="text" id="f-cliente" value="${data?.cliente||''}"></div>
-      <div><label>Teléfono</label><input type="text" id="f-tel" value="${data?.telefono||''}"></div>
+      <div><label>Cliente existente</label><select id="f-clienteid"><option value="">— Seleccionar —</option>${clienteOpts}</select></div>
+      <div><label>o cliente nuevo</label><input type="text" id="f-cliente-nuevo" placeholder="Nombre del cliente nuevo"></div>
+      <div><label>Teléfono (si es cliente nuevo)</label><input type="text" id="f-tel"></div>
       <div><label>Fecha de pedido</label><input type="date" id="f-fpedido" value="${data?.fechaPedido||todayISO()}"></div>
       <div><label>Fecha de entrega</label><input type="date" id="f-fentrega" value="${data?.fechaEntrega||''}"></div>
       <div><label>Canal</label><select id="f-canal">
@@ -1007,8 +1200,8 @@ function modalVenta(data){
       </select></div>
       <div><label>Anticipo</label><input type="number" id="f-anticipo" value="${data?.anticipo??0}"></div>
       <div><label>Descuento</label><input type="number" id="f-descuento" value="${data?.descuento??0}"></div>
-      <div><label>Estado</label><select id="f-estado">
-        ${['Pendiente','Pagado','Entregado'].map(x=>`<option ${data?.estado===x?'selected':''}>${x}</option>`).join('')}
+      <div><label>Estado del pedido</label><select id="f-estado">
+        ${ESTADOS_PEDIDO.map(x=>`<option ${data?.estado===x?'selected':''}>${x}</option>`).join('')}
       </select></div>
     </div>
 
@@ -1048,6 +1241,74 @@ function modalMerma(data){
   `;
 }
 
+function modalCliente(data){
+  const editing = !!data;
+  return `
+    <h3>${editing?'Editar':'Nuevo'} cliente</h3>
+    <div class="formgrid">
+      <div><label>Nombre completo</label><input type="text" id="f-nombre" value="${data?.nombre||''}"></div>
+      <div><label>Documento</label><input type="text" id="f-doc" value="${data?.documento||''}"></div>
+      <div><label>Teléfono</label><input type="text" id="f-tel" value="${data?.telefono||''}"></div>
+      <div><label>Correo</label><input type="text" id="f-correo" value="${data?.correo||''}"></div>
+      <div style="grid-column:1/-1;"><label>Dirección</label><input type="text" id="f-dir" value="${data?.direccion||''}"></div>
+    </div>
+    <div><label>Observaciones / preferencias</label><textarea id="f-obs" rows="2">${data?.observaciones||''}</textarea></div>
+    <div style="display:flex;justify-content:space-between;margin-top:14px;">
+      ${editing? `<button class="btn btn-danger" id="m-del">Eliminar</button>` : '<span></span>'}
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" id="m-cancel">Cancelar</button>
+        <button class="btn btn-primary" id="m-save">Guardar</button>
+      </div>
+    </div>
+  `;
+}
+
+function modalFactura(data){
+  const editing = !!data;
+  const opts = allVariantesFlat();
+  const clienteOpts = STATE.clientes.map(cl=>`<option value="${cl.id}" ${data?.clienteId===cl.id?'selected':''}>${cl.nombre}</option>`).join('');
+  const itemsHTML = ()=> FACTURA_DRAFT_ITEMS.map((it,idx)=>{
+    return `<div class="chip">${it.nombre} × ${it.cantidad} (${fmt(it.precioUnit)} c/u${it.descuento?` − ${fmt(it.descuento)} desc.`:''})<button data-rm-fitem="${idx}">✕</button></div>`;
+  }).join('') || `<div class="small">Sin productos agregados aún.</div>`;
+
+  return `
+    <h3>${editing?'Factura #'+data.numero:'Nueva factura'}</h3>
+    <div class="formgrid">
+      <div><label>Cliente</label><select id="f-cliente"><option value="">— Seleccionar —</option>${clienteOpts}</select></div>
+      <div><label>o crear cliente nuevo</label><input type="text" id="f-cliente-nuevo" placeholder="Nombre del cliente nuevo"></div>
+      <div><label>Fecha</label><input type="date" id="f-fecha" value="${data?.fecha||todayISO()}"></div>
+      <div><label>Fecha de entrega</label><input type="date" id="f-fentrega" value="${data?.fechaEntrega||''}"></div>
+      <div><label>Forma de pago</label><select id="f-pago">
+        ${['Efectivo','Transferencia','Nequi/Daviplata','Otro'].map(x=>`<option ${data?.formaPago===x?'selected':''}>${x}</option>`).join('')}
+      </select></div>
+      <div><label>Anticipo</label><input type="number" id="f-anticipo" value="${data?.anticipo??0}"></div>
+    </div>
+
+    <h4 class="mt0">Productos</h4>
+    <div id="factura-items">${itemsHTML()}</div>
+    <div class="recipe-row" style="grid-template-columns:2fr 1fr 1fr 1fr auto;">
+      <select id="fi-variante">${opts.map(({producto,variante})=>`<option value="${variante.id}" data-precio="${variante.precioVenta}" data-nombre="${producto.nombre} — ${variante.nombre}">${producto.nombre} — ${variante.nombre}</option>`).join('')}</select>
+      <input type="number" id="fi-cant" value="1" min="1" placeholder="Cant.">
+      <input type="number" id="fi-precio" placeholder="Precio unit.">
+      <input type="number" id="fi-desc" placeholder="Desc. línea" value="0">
+      <button class="btn btn-secondary btn-sm" id="fi-add">+ Agregar</button>
+    </div>
+
+    <div class="formgrid" style="margin-top:14px;">
+      <div><label>Observaciones</label><input type="text" id="f-obs" value="${data?.observaciones||''}"></div>
+    </div>
+    <div class="costeo-box" id="factura-totales"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:18px;">
+      ${editing? `<button class="btn btn-danger" id="m-del">Eliminar factura</button>` : '<span></span>'}
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" id="m-cancel">Cancelar</button>
+        <button class="btn btn-primary" id="m-save">Guardar factura</button>
+      </div>
+    </div>
+  `;
+}
+
 /* ============ MODAL WIRING ============ */
 function wireModal(){
   if(!MODAL) return;
@@ -1062,6 +1323,8 @@ function wireModal(){
   if(MODAL.type==='produccion') wireProduccion();
   if(MODAL.type==='venta') wireVenta();
   if(MODAL.type==='merma') wireMerma();
+  if(MODAL.type==='cliente') wireCliente();
+  if(MODAL.type==='factura') wireFactura();
 }
 
 function wireInsumo(){
@@ -1102,6 +1365,7 @@ function wireCompra(){
     ins.precioCompra = precioTotal;
     if(proveedor) ins.proveedor = proveedor;
     STATE.compras.push({id:uid('c'), insumoId, cantidad, precioTotal, proveedor, fecha});
+    logChange(`Compra registrada: ${fmt1(cantidad)} ${ins.unidad} de "${ins.nombre}" por ${fmt(precioTotal)}${proveedor? ' a '+proveedor:''}.`);
     persist(); closeModal();
     showToast('Compra registrada — costos actualizados');
   };
@@ -1194,6 +1458,8 @@ function wireProduccion(){
     });
     STATE.inventarioProductoTerminado[varianteId] = (STATE.inventarioProductoTerminado[varianteId]||0) + cantidad;
     STATE.producciones.push({id:uid('pr'), varianteId, cantidad, tipo, fecha});
+    let nombreProd='—'; allVariantesFlat().forEach(({producto,variante:v})=>{ if(v.id===varianteId) nombreProd=producto.nombre+' — '+v.nombre; });
+    logChange(`Producción registrada: ${cantidad} unid. de "${nombreProd}".`);
     persist(); closeModal();
     showToast('Producción registrada — inventario actualizado');
   };
@@ -1235,9 +1501,19 @@ function wireVenta(){
 
   document.getElementById('m-save').onclick = ()=>{
     if(VENTA_DRAFT_ITEMS.length===0){ showToast('Agrega al menos un producto'); return; }
+    const clienteIdSel = document.getElementById('f-clienteid').value;
+    const nombreNuevo = document.getElementById('f-cliente-nuevo').value.trim();
+    const telNuevo = document.getElementById('f-tel').value.trim();
+    let clienteId = clienteIdSel;
+    if(!clienteId){
+      if(!nombreNuevo){ showToast('Selecciona un cliente o escribe uno nuevo'); return; }
+      const nuevo = {id:uid('cl'), nombre:nombreNuevo, documento:'', telefono:telNuevo, correo:'', direccion:'', observaciones:''};
+      STATE.clientes.push(nuevo);
+      clienteId = nuevo.id;
+      logChange(`Cliente nuevo creado desde un pedido: "${nuevo.nombre}".`);
+    }
     const val = {
-      cliente: document.getElementById('f-cliente').value.trim() || 'Cliente sin nombre',
-      telefono: document.getElementById('f-tel').value.trim(),
+      clienteId,
       fechaPedido: document.getElementById('f-fpedido').value,
       fechaEntrega: document.getElementById('f-fentrega').value,
       canal: document.getElementById('f-canal').value,
@@ -1256,7 +1532,10 @@ function wireVenta(){
     } else {
       val.items.forEach(it=>{ STATE.inventarioProductoTerminado[it.varianteId] = (STATE.inventarioProductoTerminado[it.varianteId]||0) - it.cantidad; });
       STATE.ventas.push({id:uid('vt'), ...val});
-      showToast('Venta registrada');
+      const totalVenta = val.items.reduce((s,it)=>s+it.cantidad*it.precioUnit,0)-val.descuento;
+      const clNombre = clienteById(val.clienteId)?.nombre || 'cliente';
+      logChange(`Pedido registrado para "${clNombre}" por ${fmt(totalVenta)}.`);
+      showToast('Pedido registrado');
     }
     persist(); closeModal();
   };
@@ -1288,8 +1567,255 @@ function wireMerma(){
       STATE.inventarioProductoTerminado[refId] = Math.max(0, (STATE.inventarioProductoTerminado[refId]||0) - cantidad);
     }
     STATE.mermas.push({id:uid('m'), tipo, refId, cantidad, motivo, fecha});
+    let nombreRef='—';
+    if(tipo==='insumo'){ const ins=insumoById(refId); nombreRef=ins?ins.nombre:'—'; }
+    else{ allVariantesFlat().forEach(({producto,variante})=>{ if(variante.id===refId) nombreRef=producto.nombre+' — '+variante.nombre; }); }
+    logChange(`Merma registrada: ${cantidad} de "${nombreRef}"${motivo? ' — '+motivo:''}.`);
     persist(); closeModal();
     showToast('Merma registrada');
+  };
+}
+
+function wireCliente(){
+  const data = MODAL.data;
+  const del = document.getElementById('m-del');
+  if(del) del.onclick = ()=>{
+    if(confirm('¿Eliminar este cliente? (sus pedidos y facturas anteriores se conservan)')){
+      STATE.clientes = STATE.clientes.filter(c=>c.id!==data.id);
+      persist(); closeModal(); showToast('Cliente eliminado');
+    }
+  };
+  document.getElementById('m-save').onclick = ()=>{
+    const val = {
+      nombre: document.getElementById('f-nombre').value.trim(),
+      documento: document.getElementById('f-doc').value.trim(),
+      telefono: document.getElementById('f-tel').value.trim(),
+      correo: document.getElementById('f-correo').value.trim(),
+      direccion: document.getElementById('f-dir').value.trim(),
+      observaciones: document.getElementById('f-obs').value.trim(),
+    };
+    if(!val.nombre){ showToast('Ponle un nombre al cliente'); return; }
+    if(data){ Object.assign(data, val); showToast('Cliente actualizado'); }
+    else{ STATE.clientes.push({id:uid('cl'), ...val}); showToast('Cliente creado'); }
+    persist(); closeModal();
+  };
+}
+
+/* ============ FACTURACIÓN ============ */
+function facturaTotales(items, impuestoPct){
+  const subtotal = items.reduce((s,it)=> s + it.cantidad*it.precioUnit, 0);
+  const descuentos = items.reduce((s,it)=> s + (it.descuento||0), 0);
+  const base = subtotal - descuentos;
+  const impuestos = base * (impuestoPct||0)/100;
+  const total = base + impuestos;
+  return {subtotal, descuentos, impuestos, total};
+}
+
+function renderFacturacion(c){
+  const facturas = [...STATE.facturas].sort((a,b)=> b.numero-a.numero);
+  c.innerHTML = `
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+      <button class="btn btn-primary" id="btn-add-factura">+ Nueva factura</button>
+    </div>
+    <div class="tbl-wrap"><table><thead><tr>
+      <th>N°</th><th>Fecha</th><th>Cliente</th><th>Total</th><th>Anticipo</th><th>Saldo</th><th></th>
+    </tr></thead><tbody>
+    ${facturas.map(f=>{
+      const cl = clienteById(f.clienteId);
+      const tot = facturaTotales(f.items, STATE.config.impuestoPct);
+      const saldo = tot.total - (f.anticipo||0);
+      return `<tr>
+        <td><strong>#${f.numero}</strong></td>
+        <td>${f.fecha}</td>
+        <td>${cl?cl.nombre:'—'}</td>
+        <td>${fmt(tot.total)}</td>
+        <td>${fmt(f.anticipo||0)}</td>
+        <td class="${saldo>0?'lowstock':''}">${fmt(saldo)}</td>
+        <td>
+          <button class="btn btn-secondary btn-sm" data-view-factura="${f.id}">Ver</button>
+          <button class="btn btn-ghost btn-sm" data-pdf-factura="${f.id}">PDF</button>
+        </td>
+      </tr>`;
+    }).join('') || `<tr><td colspan="7"><div class="empty"><div class="big">📄</div>Aún no has generado facturas</div></td></tr>`}
+    </tbody></table></div>
+  `;
+  document.getElementById('btn-add-factura').onclick = ()=>{ FACTURA_DRAFT_ITEMS=[]; MODAL={type:'factura', data:null}; render(); };
+  document.querySelectorAll('[data-view-factura]').forEach(b=> b.onclick=()=>{
+    const f = STATE.facturas.find(x=>x.id===b.dataset.viewFactura);
+    FACTURA_DRAFT_ITEMS = f.items.map(it=>({...it}));
+    MODAL={type:'factura', data:f}; render();
+  });
+  document.querySelectorAll('[data-pdf-factura]').forEach(b=> b.onclick=()=>{
+    generarPDFFactura(STATE.facturas.find(x=>x.id===b.dataset.pdfFactura));
+  });
+}
+
+function generarPDFFactura(f){
+  const cl = clienteById(f.clienteId);
+  const neg = STATE.config.negocio;
+  const tot = facturaTotales(f.items, STATE.config.impuestoPct);
+  const saldo = tot.total - (f.anticipo||0);
+  const win = window.open('', '_blank');
+  if(!win){ showToast('Tu navegador bloqueó la ventana — permite pop-ups para generar el PDF'); return; }
+  win.document.write(`
+    <html><head><title>Factura #${f.numero} — ${neg.nombre}</title>
+    <meta charset="UTF-8">
+    <style>
+      body{font-family:'Helvetica Neue',Arial,sans-serif;color:#33073e;padding:36px;max-width:640px;margin:0 auto;}
+      h1{color:#6b117b;font-size:22px;margin:0;}
+      .muted{color:#7a5e83;font-size:12.5px;}
+      .row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:2px solid #edaeff;padding-bottom:16px;}
+      .box{background:#f9eeff;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13px;}
+      table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;}
+      th{text-align:left;border-bottom:2px solid #33073e;padding:6px 4px;font-size:11.5px;text-transform:uppercase;}
+      td{padding:7px 4px;border-bottom:1px solid #edcff5;}
+      .right{text-align:right;}
+      .totales{margin-top:14px;width:280px;margin-left:auto;font-size:13.5px;}
+      .totales div{display:flex;justify-content:space-between;padding:3px 0;}
+      .totales .final{font-weight:800;font-size:16px;color:#6b117b;border-top:2px solid #33073e;margin-top:6px;padding-top:8px;}
+      .foot{margin-top:30px;font-size:11.5px;color:#7a5e83;text-align:center;}
+      @media print{ .noprint{display:none;} }
+    </style>
+    </head><body>
+    <div class="row">
+      <div><h1>${neg.nombre}</h1><div class="muted">${neg.direccion||''} ${neg.ciudad? '· '+neg.ciudad:''}<br>${neg.telefono||''} ${neg.correo? '· '+neg.correo:''}<br>${neg.redes||''}${neg.nit? ' · NIT '+neg.nit:''}</div></div>
+      <div style="text-align:right;"><div class="muted">Comprobante N°</div><div style="font-size:20px;font-weight:800;color:#fe329d;">#${f.numero}</div><div class="muted">${f.fecha}</div></div>
+    </div>
+    <div class="box">
+      <strong>Cliente:</strong> ${cl?cl.nombre:'—'}<br>
+      ${cl?.documento? 'Documento: '+cl.documento+'<br>':''}
+      ${cl?.telefono? 'Teléfono: '+cl.telefono+'<br>':''}
+      ${cl?.direccion? 'Dirección: '+cl.direccion+'<br>':''}
+      ${f.fechaEntrega? 'Fecha de entrega: '+f.fechaEntrega+'<br>':''}
+    </div>
+    <table><thead><tr><th>Producto</th><th class="right">Cant.</th><th class="right">Precio unit.</th><th class="right">Desc.</th><th class="right">Subtotal</th></tr></thead><tbody>
+      ${f.items.map(it=>`<tr><td>${it.nombre}</td><td class="right">${it.cantidad}</td><td class="right">${fmt(it.precioUnit)}</td><td class="right">${fmt(it.descuento||0)}</td><td class="right">${fmt(it.cantidad*it.precioUnit-(it.descuento||0))}</td></tr>`).join('')}
+    </tbody></table>
+    <div class="totales">
+      <div><span>Subtotal</span><span>${fmt(tot.subtotal)}</span></div>
+      <div><span>Descuentos</span><span>-${fmt(tot.descuentos)}</span></div>
+      ${STATE.config.impuestoPct>0? `<div><span>Impuestos (${STATE.config.impuestoPct}%)</span><span>${fmt(tot.impuestos)}</span></div>`:''}
+      <div class="final"><span>Total</span><span>${fmt(tot.total)}</span></div>
+      <div><span>Anticipo pagado</span><span>${fmt(f.anticipo||0)}</span></div>
+      <div><strong><span>Saldo pendiente</span><span>${fmt(saldo)}</span></strong></div>
+    </div>
+    <div class="box" style="margin-top:20px;"><strong>Forma de pago:</strong> ${f.formaPago||'—'}${f.observaciones? '<br><strong>Observaciones:</strong> '+f.observaciones:''}</div>
+    <div class="foot">Gracias por tu compra — ${neg.nombre}</div>
+    <div class="noprint" style="text-align:center;margin-top:24px;">
+      <button onclick="window.print()" style="background:#fe329d;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;">Imprimir / Guardar como PDF</button>
+    </div>
+    </body></html>
+  `);
+  win.document.close();
+}
+
+function renderNegocio(c){
+  const neg = STATE.config.negocio;
+  c.innerHTML = `
+    <div class="card small" style="margin-bottom:16px;">Esta información aparece automáticamente en cada factura que generes — no está escrita en el código, la editas aquí.</div>
+    <div class="grid g2">
+      <div class="formgrid">
+        <div><label>Nombre del negocio</label><input type="text" id="ng-nombre" value="${neg.nombre}"></div>
+        <div><label>NIT / identificación</label><input type="text" id="ng-nit" value="${neg.nit}"></div>
+        <div><label>Teléfono</label><input type="text" id="ng-tel" value="${neg.telefono}"></div>
+        <div><label>Correo</label><input type="text" id="ng-correo" value="${neg.correo}"></div>
+        <div style="grid-column:1/-1;"><label>Dirección</label><input type="text" id="ng-dir" value="${neg.direccion}"></div>
+        <div><label>Ciudad</label><input type="text" id="ng-ciudad" value="${neg.ciudad}"></div>
+        <div><label>Redes sociales</label><input type="text" id="ng-redes" value="${neg.redes}"></div>
+        <div><label>% Impuesto en facturas (IVA, si aplica)</label><input type="number" id="ng-imp" value="${STATE.config.impuestoPct}"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="ng-save" style="margin-top:10px;">Guardar</button>
+  `;
+  document.getElementById('ng-save').onclick = ()=>{
+    Object.assign(STATE.config.negocio, {
+      nombre: document.getElementById('ng-nombre').value.trim() || 'Mi negocio',
+      nit: document.getElementById('ng-nit').value.trim(),
+      telefono: document.getElementById('ng-tel').value.trim(),
+      correo: document.getElementById('ng-correo').value.trim(),
+      direccion: document.getElementById('ng-dir').value.trim(),
+      ciudad: document.getElementById('ng-ciudad').value.trim(),
+      redes: document.getElementById('ng-redes').value.trim(),
+    });
+    STATE.config.impuestoPct = Number(document.getElementById('ng-imp').value)||0;
+    persist(); showToast('Configuración guardada');
+  };
+}
+
+function wireFactura(){
+  const data = MODAL.data;
+  const select = document.getElementById('fi-variante');
+  const precioInput = document.getElementById('fi-precio');
+  function setDefaultPrecio(){ const opt = select.options[select.selectedIndex]; precioInput.value = opt.dataset.precio; }
+  select.onchange = setDefaultPrecio; setDefaultPrecio();
+
+  function refreshTotales(){
+    const tot = facturaTotales(FACTURA_DRAFT_ITEMS, STATE.config.impuestoPct);
+    const box = document.getElementById('factura-totales');
+    box.innerHTML = `
+      <div class="costeo-line"><span>Subtotal</span><span>${fmt(tot.subtotal)}</span></div>
+      <div class="costeo-line"><span>Descuentos</span><span>-${fmt(tot.descuentos)}</span></div>
+      ${STATE.config.impuestoPct>0? `<div class="costeo-line"><span>Impuestos (${STATE.config.impuestoPct}%)</span><span>${fmt(tot.impuestos)}</span></div>`:''}
+      <div class="costeo-line total"><span>Total</span><span>${fmt(tot.total)}</span></div>
+    `;
+  }
+  function refreshItems(){
+    const wrap = document.getElementById('factura-items');
+    wrap.innerHTML = FACTURA_DRAFT_ITEMS.map((it,idx)=> `<div class="chip">${it.nombre} × ${it.cantidad} (${fmt(it.precioUnit)} c/u${it.descuento?` − ${fmt(it.descuento)} desc.`:''})<button data-rm-fitem="${idx}">✕</button></div>`).join('') || `<div class="small">Sin productos agregados aún.</div>`;
+    wrap.querySelectorAll('[data-rm-fitem]').forEach(b=> b.onclick=()=>{ FACTURA_DRAFT_ITEMS.splice(Number(b.dataset.rmFitem),1); refreshItems(); refreshTotales(); });
+  }
+  refreshItems(); refreshTotales();
+
+  document.getElementById('fi-add').onclick = ()=>{
+    const opt = select.options[select.selectedIndex];
+    const cantidad = Number(document.getElementById('fi-cant').value)||1;
+    const precioUnit = Number(precioInput.value)||0;
+    const descuento = Number(document.getElementById('fi-desc').value)||0;
+    FACTURA_DRAFT_ITEMS.push({varianteId:select.value, nombre:opt.dataset.nombre, cantidad, precioUnit, descuento});
+    refreshItems(); refreshTotales();
+  };
+
+  const del = document.getElementById('m-del');
+  if(del) del.onclick = ()=>{
+    if(confirm('¿Eliminar esta factura? (no revierte el pedido asociado)')){
+      STATE.facturas = STATE.facturas.filter(f=>f.id!==data.id);
+      persist(); closeModal(); showToast('Factura eliminada');
+    }
+  };
+
+  document.getElementById('m-save').onclick = ()=>{
+    if(FACTURA_DRAFT_ITEMS.length===0){ showToast('Agrega al menos un producto'); return; }
+    const clienteIdSel = document.getElementById('f-cliente').value;
+    const nombreNuevo = document.getElementById('f-cliente-nuevo').value.trim();
+    let clienteId = clienteIdSel;
+    if(!clienteId){
+      if(!nombreNuevo){ showToast('Selecciona un cliente o escribe uno nuevo'); return; }
+      const nuevo = {id:uid('cl'), nombre:nombreNuevo, documento:'', telefono:'', correo:'', direccion:'', observaciones:''};
+      STATE.clientes.push(nuevo);
+      clienteId = nuevo.id;
+      logChange(`Cliente nuevo creado desde una factura: "${nuevo.nombre}".`);
+    }
+    const val = {
+      clienteId,
+      fecha: document.getElementById('f-fecha').value || todayISO(),
+      fechaEntrega: document.getElementById('f-fentrega').value,
+      formaPago: document.getElementById('f-pago').value,
+      anticipo: Number(document.getElementById('f-anticipo').value)||0,
+      observaciones: document.getElementById('f-obs').value.trim(),
+      items: FACTURA_DRAFT_ITEMS.map(it=>({...it})),
+    };
+    if(data){
+      Object.assign(data, val);
+      logChange(`Factura #${data.numero} actualizada.`);
+      showToast('Factura actualizada');
+    } else {
+      const numero = STATE.config.facturaCounter++;
+      STATE.facturas.push({id:uid('f'), numero, ...val});
+      const clNombre = clienteById(clienteId)?.nombre||'cliente';
+      logChange(`Factura #${numero} generada para "${clNombre}".`);
+      showToast('Factura generada');
+    }
+    persist(); closeModal();
   };
 }
 
