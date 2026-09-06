@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galú Pastelería — Gestión</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22Gal%C3%BA%20Pasteler%C3%ADa%20%E2%80%94%20Gesti%C3%B3n%22%2C%20%22short_name%22%3A%20%22Gal%C3%BA%20Gesti%C3%B3n%22%2C%20%22description%22%3A%20%22Sistema%20de%20gesti%C3%B3n%20de%20Gal%C3%BA%20Pasteler%C3%ADa%3A%20insumos%2C%20recetas%2C%20costeo%2C%20pedidos%20y%20facturaci%C3%B3n.%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23fdf8fe%22%2C%20%22theme_color%22%3A%20%22%236b117b%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAANI0lEQVR4nO2da4xcVR3Az71z5z2zj5nZZ7ft0naBLpSltETSCqKYYDHx8YVAgkbiByNINKIIgUDwg0hQY6L4gQ/GiEQbExNqCdqIwfAQ2kLdLW2h3bJ0Z9%2BP2bvznrkvP0wy2Wyny54597zu/H9f5z7O/M9v/udxzz2jPNj5OAKAZlF5FwCQGxAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIELjXQBRmDDGcU%2B5yr%2BLRknkohUFasKVzV%2Bn1axqFYHckgbrRq0gk5cFYibNZgrgVZk8KBB3bxpSL5XHTPKOQGJ6czkeM8kLAsmizjpqxZZdI4kFktSbdciekKQUyBvqrEPShCSZQJ5UZy3SaSTTowzP21NHom8qRwaSKKBuIUsqEl2gFlRnLeJrJHQT1uL21BE5DoJmIJFDxgVhU5GIGQjsuRICRkY4gQSMkVCIFh%2BBmjDRQiMsQjVnomQgsAcXQSImhECCxEI6RIgbf4FEiIK8cI8eZ4G4f38PwDeG3DrRoI6LcOxW88lAYA8NuESVg0BgDz3Yx5a1QGAPbRhHmP8oDJAapgJB%2BmEDyzizEwjsYQmzaDMSCOxhD5uYsxAI7OEFg8hTFwjs4Qvt%2BMMoDCCCrkCQfkSAai1QFAjsEQd6dUFLILBHNCjVCPSBACKoCATpR0xo1Iv7AoE9IuN67UATBhDhskCQfsTH3TqCDAQQ4aZAkH5kwcWack0gsEcu3KovaMIAItwRCNKPjLhSa5CBACJcEAjSj7yQ1x1kIIAIEAggglQgaL9kh7AGBdqhbPMoSNkSiOwMxrcFYyktlNJCSS0YUbWAogZUn19RLcc2HLvi2DnLyFnGilWZN0oLRildLUxUclnL4P0NvAORQIzTz0Aguj%2Ba2hdN7Q51hFTfBkdqiqopahihDl/g8k8zZuVcST9TXhkrrnxSyRGW6id9N9wa7yW8SA0HOYbjGI5dsAzdqmbMynS1mK7mz5ez6WreceUejZgwxpve2UOCDBT3%2BT8f77uzfWB7MObKBRNa8GC852C8ByG0ZJZPFJbeyM2dLq44iF4dbQoFKQFFCShqVNW6/eG1H2Ut4/3i0pu5%2BfcKS4Zj8yrh5QgtUEIL3p246s72Ab9Cq7Of0kKH2gcOtQ8smeXXsjOv6lNLZpnSvUho8/lvj/fdHu/Treorevrv%2BmRejIZYebDz8ebOpNp%2BBRXfvckdX%2BncHqCmTkNs5Ly4NP7XzMTmT3GxCds8Oct4cXn8VT3tYs5srhUTMQNdH%2B78fu91ff4I%2B1urSBkIRNnfF5e4z/9A9%2B5bot2/mjutW1WOJRFrHkhB6L7krme23szFHum4KZr85bbP8I1VkwLRaL9Cqu%2Bx/pF7kjsU1y/tXXr84We33tylhcgv1VydipKBQqrvp1v2HYj18C6IfCS04FNb9gaVjeY16CGEQAFFfbJ/73C4g3dBZGUwGP9Gis8/Hwgh0MN9e26IJHiXQm6%2B2rnNrXkyLJoZhbnbAfp65%2BBBspZr3iiNFTPjlWy6Wlg0ylmrWnVsy3GCqi%2BoqEkt2OUP9/sju0JtQ6E2r3bPFaTcm9j589lRkos0MSXNeRg/FGr7VmqouXMLtvladubY6tQnlXzDA0q2WUJIt6oX1zyv6NJCe6PJA7GeGyNJTWHdX//N/Jl/rk43/CisajFV2x6MDYc772jrT2pB3IsfiHd3LAQYj%2Bp5CqQg5YHuYR9%2BLVqOc0S/dDgz0cRs7KJZPrY6fWx1Ou7zfy7e%2B%2BWObVvFmPgp2WbJNhfN8snC0p%2BWxu/q2Hp/1xBW11hFym3x3iP6JL1CXg5Pgb7UPjAUasM9a84oPTs7dqG8Snj3nGUc1dNH9fRIJHFPYscekTphNnKO6pPny6s/G9i/8WPjddwYTTIWCLsT7VYHSFPUe5M7cM%2B6UM4%2BPPkuuT1rGS1mHps6%2BWj6xLmS7uJlyTlfXn1%2B4SzWKcOhDsKb4tYvt1HY7fG%2BBGYzP1nNPzF1cpVOG/9BaeXH6eO/mD29KNLD1Nezs1gLTmI%2Bf8MVLPTg1oR9rXM71vFF23x6%2BlTBNimVp8bruVlEukDITRyE3s4vDAbjmz%2Bl1x9h2Y/mk4EGg7FBzEmLFxY%2BmjdKlMojMucx2%2Bu4z0%2BpJA3hI9BnY3jrHz6u5F7LNh79ep4VEy%2BdYHW6yeEj0C2xbqzj/7x8kfNiQX4wn6vCg4NAUVXbHsSYesmYleOFRXrlERzcTnHZtiiVpCF4Arkyhr8m3K4gjJ/VW/l5y2nZBISuxRyZ54iXumLVMocMNBRsxzr%2BZGGJUknER0HKgThecz9nFCkVpiEcBOoLhD/9oDV85Oq0oVzc0da3LYAxXM1ZBuNnYRwE6tYwBJo3SoK8fsCea0Pt3%2B3ZjXXKubJOpyxXhMNEYpcfY/1la879%2BBTlrvat93ddjftSyqnCMqUiXQkOAkVVjJmuZbOCe/3H%2BkcIFxghhM6W9EfSxwkvgkVI9cVU/yDBcg4bOW/k5miUbQM4CBRUMX5VtJ9dMOahnuse6rmO0sXfzi2wf8WHQx8ogLPGxXCYzmrIi4Ocv2Qusr%2BvEGuiN6B1538wObIyeaWVmVThIFAVJ6lgpauW5VIl/8clPhs1cRCoYmNsLhFh%2B2hQRnSr%2BvTMqQqntp6DQAUbY14n6cY7lx5m0Sw/kj6%2BwG%2Byg4NASwbGkr8eP960dUsxWsz8cPLdmSrTZxfr4DCMnzfLezZ9cI8/HFa1krcG8%2BTkLeOl5YtH9TT3TbE4CDSH84tRELo61DZazNArj1ysWtVX9amX9UvkT91dgYNAFypZrONviqawBHpm5opvZ96T2HEfp3fICclZxqni8pu5%2BROFxVbf4u7Dku4gjAVBB2M9f1g83woTQg5CpmMbjl20zRWzmjEr00ZhslK4UFmdrFDcZJMEPIGu8u8iX1NWsM10Nb/5VQq9/vANkYQ3WrENXm0WB6zX4/nMRP83v4B1/N0J7FcQATbwEeit3DzW8SORxP5oilJhABL4CPRxJTdZxXtw872e4agq4pagLQ63h6kvr%2BDtAZDSQo/2jzSxlQdAFW4C/Ts7g7t4ZW8k%2BaPePew39QE2gJtAhmMfXv4Y96xb471Pb9nHeP8AYAOwBWr6Xzku5xU93cQSlpFI4reDB77Y1g%2BJiAa49ctzQZmNnN8tnG3iaU6HL/CD3uufHzxwqH0Aq2cdhMUhbsN5XHO2pL%2B0fPG%2BZDNZbVsg9mDP8He6d58prZwr6eOV7LxRWjbLZdsyHFtT1ICitvkCCS04EIjuCMZvjCS3BLy5wyZH%2BA%2BMDy9PDIc6b4ommztdU5SRSGJEpA3qWopmmjAXu0EIIQc5z8yOXijjPWEFaNBEzQqxqL5km09Ov3eJx5pwgBAhBEII5Szj0akTH5RWeBcEwEMUgRBCOct4Yuq9f7XqTmSS0qRA7naD6piO/eu5M8/NjvFdbmc49miR9Uvm3PHOPxb%2BJzd3urTy7a5rbov3Mp4tzFrGP1anjqxc4vs3gBIhokAIoYxZeW527G%2BZiW%2BmhvbRX8hhI%2Bd/hcyx7NQ7%2BUVTpAWj4tO8QK6sTtyYi5XcU9Pvbw1ED7Vv/UJbX8ztDWwNxx4rZt7OL7yTX6C0f7ksePl/49PVwguLH/5%2B6fyecOfNsa79kVQ/wYRywTbHy9kPy/pYMXOupFch35DR/N9%2BI8r//L0BMZ9/ZzC%2BM9jWFwintFBKC7X5AgFFDao%2Bv6JajmM6dtWxC7axalVXTWPRLM8ZxZlqcbKan2vJHas%2BFT4ZiEEr1pC8ZYwWM95YZi8CJGNqgeaBABkhFYjShBDADMIahAwEEAECAUS4IBC0YvJCXneQgQAi3BEIkpCMuFJrkIEAIlwTCJKQXLhVX25mIHBIFlysKWjCACJcFgiSkPi4W0eQgQAi3BcIkpDIuF47VDIQOCQmNOoFmjCACFoCQRISDUo1QjEDgUPiQK8u6DZh4JAIUK0F6AMBRFAXCJIQX2jHn0UGAod4wSDyjJowcIg9bGLOrg8EDrGEWbSZdqLBITawjDOMwgAiWAsESYg2jCPMIQOBQ/RgH1s%2BTRg4RAMuUeW2P1Dt2/LaIMZjcPxBcu5EQyoih28M%2BY/CwCESuEePv0BIgChIighxE0IgJEYs5EKQiAm0ySZ0qzeJIOrUECUD1REqOgIiWnyEEwiJFyNxEDAyAjVha4HmbB0CqlNDxAxUR9ioMUbkOAiageq0eCoSWZ0aogtUowU1El%2BdGkI3YeuQJabkSPRN5chAdTyfiiRSp4ZkAtXwpEbSqVNDSoFq1CMutUmSelNHYoHqSJqQZFenhhcEqiFLQvKGN3W8I1AdMU3ymDd1PChQnbV1xkUmr0qzFi8LtBZmMrWCNGtpFYHW0rCOm7Cq1VxpSCsK1BCwoTlkepQBCAgIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQMT/AeZbuEH3M6MjAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAlfUlEQVR4nO3de7CdV3nf8ffd17Nv565z0/XIsi3Zki3fsIwwGGMCTmg7oU5LSTu0NEntMWQYCiUBlxJKMoEy5tJOQ5qGQOgM0E4KTB2XxiaR8QVHBtmWJXzRXTo693P2Pvt%2Bf/uHjJB1OWdf3r2ftd71/YzGI2ts7Ufaaz2/vda73/XaDw58ygIAmMcnXQAAQAYBAACGIgAAwFAEAAAYigAAAEMRAABgKAIAAAxFAACAoQgAADAUAQAAhiIAAMBQBAAAGIoAAABDEQAAYCgCAAAMRQAAgKEIAAAwFAEAAIYiAADAUAQAABiKAAAAQxEAAGAoAgAADEUAAIChCAAAMBQBAACGIgAAwFAEAAAYigAAAEMRAABgKAIAAAxFAACAoQgAADAUAQAAhiIAAMBQBAAAGIoAAABDEQAAYCgCAAAMFZAuAHDficrRTvy2k8FtnfhtASkEAPTTof7e/uuSENALAQClSfX61ly2WlIByiIAoBC92n2DLv1DEQlQBAEASZ7s%2BGu66E9NHkAKAYCuMrPjr448gBQCAB1H02/KhX9dhAE6igBAR9D0XUEYoKMIALiJvt855/9uSQK4hQBAu2j6XcayAG4hANAi%2Br4KWBagHQQAmkPfVxNJgBYQAGgIfV8XJAEaRwBgNfR9fZEEWBMBgMuj9XvGubeSGMClCAC8AX3fq1gQ4FIEAF5H6zcECwKcRwCYjr5vJhYEsAgAk9H6YbEgMBsBYCJaPy5CDJiJADALrR%2BrIAZMQwCYgtaPBhED5iAAvI/WjxYQAyYgALyM1o82EQPeRgB4E60fLiIGvIoA8BpaPzqEGPAeAsA7aP3oAmLASwgAL6D1o8uIAW8gAPRG64cgYkB3PukC0Dq6P1TAONQXKwAtMeWgFJYCmiIANEPrh7KIAe2wBaQTuj/UxyjVCCsAPTCpoBGWArogAFRH64emiAH1sQWkNLo/dMcYVhkrAEUxbeAZLAWUxQpARXR/eA%2BjWkGsANTCJIGHsRRQDSsAhdD9YQLGuToIAFUwK2AORrsi2AKSx2SAgdgOUgErAGF0f5iM8S%2BLAJDE6AeYBYLYApLBoAfOYztICisAAXR/4FLMi%2B4jALqNUQ5cCbOjy9gC6h4GN7AmtoO6iRVAl9D9gcYxX7qDAOgGRjPQLGZNFxAAHcc4BlrD3Ok0AqCzGMFAO5hBHcVF4E5h4AKu4LJw57AC6Ai6P%2BAu5lQnEADuY6QCncDMch0B4DLGKNA5zC93EQBuYnQCncYscxEB4BrGJdAdzDW3EADuYEQC3cSMcwUB4ALGItB9zLv2EQDtYhQCUph9bSIA2sL4A2QxB9tBALSOkQeogJnYMgKgRYw5QB3Mx9YQAK1gtAGqYVa2gABoGuMMUBNzs1kEQHMYYYDKmKFNIQCawNgC1Mc8bRwB0ChGFaALZmuDCICGMJ4AvTBnG0EArI2RBOiImbsmAmANjCFAX8zf1REAq2H0ALpjFq%2BCALgixg3gDczlKyEALo8RA3gJM/qyCIDLYKwA3sO8vhQBAACGIgAuxscEwKuY3RchAN6A8QF4G3P8QgTALzEyABMw088jAF7HmADMwXw/hwCwLEYDYB5mvUUAAICxCAA%2BCACGYu6bHgCMAMBkhncAowPA8PcegGV2HzA6AADAZOYGgMmxD%2BBCxnYDQwPA2PcbwGWZ2RNMDAAz32kAqzOwM5gYAAAAy8AAMDDkATTItP5gVgCY9u4CaJZRXcKgADDqfQXQMnN6hUEBAAC4kCkBYE6kA2ifIR3DiAAw5L0E4CIT%2BoYRAQAAuJT3A8CEGAfQCZ7vHh4PAM%2B/fwA6yts9xOMBAAC4Ei8HgLejG0B3eLiTeDkAAACr8GwAeDi0AXSZV/uJNwPAq%2B8WACme7CreDAAAwJo8GACeDGoA4rzXWzwYAACARngtALwX0QDU4bEO46kA8Nh7A0BBXuozngoAAEDjvBMAXoplACrzTLfxTgAAAJrikQDwTCAD0II3eo5HAgAA0CwvBIA3ohiAXjzQebwQAACAFmgfAB4IYQCa0r3/aB8AAIDW6B0AuscvAN1p3YX0DgAAQMs0DgCtgxeAZ%2BjbizQOAABAO3QNAH0jF4D3aNqRdA0AAECbtAwATcMWgIfp2Je0DAAAQPv0CwAdYxaACbTrTvoFAADAFZoFgHYBC8AoevUozQIAAOAWnQJAr2gFYCaNOpVOAQAAcBEBAACGCkgX0CiNVlUa8dv2cKBnJBjp94cG/KH%2BQLjfH0r4g1FfIOLzR32BiC8Qsn1%2B2/bbtt%2By/bav7jhVq151nIpTrzr1quNUnXrFqWdrlUy9kqlVM7Vypl7J1irpWiVVK89XCsvVsmM50n9WoHtOVI5OBrdJV7E2bQIA7RsIhDeH4pvD8U2h%2BHgwMhqMrAv2%2BCy7qd/Eb9t%2Byx9u5n%2BqOvWFanG%2BUpyvFOarxblK4VQpe6acLTv15v4AAFylRwDw8b81CX/w2p6%2Ba3r6tvf0X93Tm/AHRcoI2L7xYHQ8GL3wF%2BuWM13OnypnT5WyJ0vZk%2BXMTDnPMgGeocUiQI8AQONivsCu6OCN0cHd0aGNoZh0OVfks%2BwNodiGUGxvfPTcr2RqlZeLqZcLqZ8XUkeKK/quD3ZHhz634RbpKtxxfouv7NQrv/hJoV5NVkupWvncP1PVcrJWnq3kM7WKdL1oDgHgEROh6B2xkT3xkWsjfc3u6igi4Q%2B%2BKbbuTbF1lmVVnfrRUublQvKF/PJL%2BWV9w0B3AdsO2P4ey9/If5yqlafKudOl7Jly7nQ5e7KUXamVO10h2qFBALD/s4rxYPTu3vG9idFNobh0LW4K2L7tPX3be/p%2BfWBLyakdzC//LLf4XG5xrlKQLg1X1O8P9UdCOyMD539lqpw7VEgeKiQP5ZOL1aJgbSLU3wXSIABwqZgv8NbE2N29Ezsi/dK1dFzY9t8WW3dbbN39ljVVzj2XW3gqM/dqcUW6Lqzt3C7fu/s2WJY1Vym8kF96KjP3Yn65zrfC1GA/OPAp6RpWw8f/i2wOx9/Tv%2Bnu3vGw3dCq3KtmKvknMrM/Ts%2BeLmela7mYl64BdMJKrfxMdv7JzOxL%2BaQJ3w9WeRHACkAbt8aGf31gy43RQelClDAejL5vcOv7BreeKGX2ZWaeSM8auMOgqT5/6N6%2BDff2bUhWS/93ZerR1JkUlwqEEACqsy3r9vjI%2Bwa3buvpla5FRZPhxGQ48YHhq/dnF/46deaF/JL3P1J6xUAg/P6hq%2B4bnNyXnvl%2B8pSCiznPUzoA2P%2B5NTb8L4ev3hJOSBeiOp9l74mP7ImPTJfzj66ceWzlbK5elS4KDQnZvl/pW//OvvU/yy1%2Ba/HIsVJGuiKXqXwpWOkAMNmWcOJfr7vmpuiQdCGamQhFf2vdtf9ieNsjqTN/sfCadDlolG1Zt8aGb4kN/c3K9LcWj7Ap1B0cBqecmC/wodHr/vPmPXT/loVt/%2B2xddJVoGm2Zb%2Brb/1/m3zLewe2BGwtb2fRi7oBYOb%2Bz52JsT%2BdfMu7%2BzbYet7MBbQv6gt8cN01X918x%2BawR%2B5uUbabqRsAphkMhD%2Bz/uZPjN/Q7w9J1wLI2xSKf2nTnnv7NkoX4mVcA1DCnvjI745e3yt0WBugppDte3B0x%2B7o4FfnDnNVvxMUXQEou2JyXcj2fXj0uocmdtP9gcvamxj9yuY7LjpNVjtq9jRFA8AQo8HIFzfd/q6%2BDdKFAEobC0b%2B06Y3TfJ9aLcRAGJuig59edOerYxpoAH9/tAfb7ztOgMOv%2BomFQNAzbWSu/5h/6bPbrhZ6gktgI5ivsB/3HDLzTFdvx6tYGdTMQC8zbasD6675ndGtvNFT6BZYdv/yfHdV7FudgkB0FUB2/fx8RveO7BFuhBAVz0%2B/6fX3zwYCEsX4gUEQPcEbN8nJ258a2JMuhBAb0OB8KcnbjL8RHRXKBcACm6TuSJo%2Bx6a2P0mzicA3LCtp/ejYzulq2iaav1NuQDwpIDt%2B/cTN90aG5YuBPCOvYnRu3rHpavQGwHQcbZl/duxnfp%2BdQFQ1r9Zt52jU9qhVgCotj5yxe%2BMbL%2BTfX%2BgAxL%2B4AOjO6SraI5SXU6tAPCe%2BwYn/0H/JukqAM/aGx/dGx%2BVrkJXBEAH3RZb94FhRZ8EBHjGB4av9nFXTUs4DbRTNoRiHxvfpe/dXo7lnC3nF6rFhUrxF/8sZGvVklMrO/VSvVZyauV63W/bIdsX9vnDtj/k84Vsf9TnHwr0DAfCQ4Ge4UDPUCA8HOxhoxadMxGK3tU7/rfpaelC9KNQACi1NdamHp//oYndMZ9Cf72NmKnkjxTTrxVXjhbTR0vpYr225v9Sd5yKU1/zqN64P7glFJ8MJ7aEE5Ph%2BKZQvMfHl7jhmn86uHVfeqZuOdKFNESdpwRr1qF08cDIjg2hmHQVDalbzs8LqWez83%2BfXZip5Dv0Ktla5VAheaiQPPevtmVvDMV2RQd2RQZ3RgdYH6BN60PRt/aO7UvPSBeiGQLAfXcmxt7ROyFdxdpeK648mpr6%2B9x8plbp8ks7lnO6nD1dzv516oxlWZtC8Ruig7uiAzdHhyK6LZuUcv/Jp6fKuTZ/k5DtC9q%2BiC8wEAgNBsJjwehkOL4llNjak1B5q/2%2BgS0EQLOYbC5bF%2Bj50Oh10lWspurUn8rO/Z/k6VeLK9K1vO5cGDySOh20fTdFh/YmRm%2BPrYtzVKqQslMvO/VcvbpYLV746zFfYFd0cG989I74iII7eFvCiS3hxMlSRroQnagSAJ65APDg6HXKbv1XHeeR1Om/Sp5MVkvStVxexanvzy3szy34bfuGyODexOgd8ZE%2BNojUkKtXn83OP5ud7/H57%2BmduG9wcjjQI13UG7y9d/wvFvQIAEUuAyjaqjT1tsSYsuc9PJud//ria9PlTu3yu6vmOM/nl57PL31t/pU98XXv6tuwOzqk7u6DYYr12iOpMz9cmXpP/6Z/PrRNndXA2xJj31g44mhyKVgFBIBrEv7gb49sl67iMk6Xs1%2Bbf%2BVgflm6kFZUnfpTmbmnMnOjwci7%2Bjbc0zvBOcCKqDrO95OnnsrMfXx81/WRAelyLMuyhgM9u6IDmg51EdwI5prfHNqm4LdZfrgy9ZFTz3pgSsxVCn%2B5eORfnfjx56ZfOPyLbxNB3GK1%2BMmpnz6SOiNdyOvuiI9Il6ATVgDu2BCK3avYs91z9epX5w4/nZmTLsRNNcc5tw29I9L/G4OTt8XWsS8kruY4X5t/uViv3jc4KV2LpchaRBdKrAA8cAX4g%2Buu8dsK9aKTpcyHT/3EY93/Qi8XUp89%2B/yDJ5/52/R0zWHPV943Fo/8cGVKugprMhxX9lsYF1Gh7ykRALrbGRlQ6kkvLxdSnzjz3HylIF1Ix50uZx%2BePfRbJ558NHWmSgxI%2B9r8K%2BLfLbYte0ekX7YGjRAALvhnQ1dJl/BLB3JLD039bM2zGbxkoVr8r/MvP3Dy6Sczs4SAoKpT/9LsoapTly2DXaDGEQDt2t7Tf2N0ULqK1z2dnfvs9IGSs/YZPt4zU8l/fubgR08/%2B6L%2BV7z1NVXOfS95SraG7T19sgVohABo1/uGtkqX8LqfF1JfnHnJ8J2QI8X0p6Z%2B%2BumzPzvOHaFC/nfypOxHkAlNjuFSgXwAqHAlpGWbQnFF7vyarRQ%2BN/18RXr1rYgDuaUvzByUrsJQmVrl8RXJk5kHA%2BGgLd/ZGiHe/fT4a1LWe/o3SpdgWZaVq1c/c/ZAuutnugGXtS8jeSibbVmjwYhgARohAFoX8QXuVuPUzy/OvNT%2BGZCAW14ppJZFz5saD0YFX10jBEDr3tE7rsIpKI%2Bnzz6XW5CuAvglx7IOid6tPcYKoDEEQOve0bteugRrsVr8s/lXpasALvZKISX46n0B5Q5lURMB0KINodjVPb3SVVhfnTts1Ff%2BoYtT5azgq/fY8ktzLQgHgPhF8Jbd1TsuXYL1ZGb2QG5JugrgMuYrxbX/o45RYW%2B2QbI9kBVAi96WGJMtoG45/2NJ1/iE5y1URQOAFUBjCIBWbArFxb9m8KOV6bOaPN0FBqo6dcFD%2BjRaAcgiAFpxe1z46LeqU//28nHZGoDVFeXuBw4TAI0hAFohfvbnY%2BmzJhz2Ca3RXNTHe9S0hD%2B4PSJ82tSjKfmD14HVheQ24ot1E89DbAEB0LTrIwO2JfnslyPFlROcdAa1hWyf4COSCIAGSQaApt8B3SV92vj/WzkrWwCwpnXBHsFXF7z80ALBTsgKoGk7RU//L9ZrT2RmBQsAGjESkDyMocQKoDEEQHMivsDWcFywgP25hQK3/kJ5W8IJwVfXawUgiABozlXhhOwFgJ/mFgVfHWiQ7BclUqJnkWqEAGjOVaLn/ziWdYAAgPJ8lr1T9FLZDF%2BSbgwB0JxtYckAOF5Kp2plwQKARuyKDvT5Jc/jnK1wk3xDCIDmbBXd2fwZR79BB28XfVCSYzlzokfRaYQAaIJt2RMhySOADuaXBV8daMRgIHyX6FGJS9VSlYdjN4YAaMJosEf2YdPHSmnBVwca8U8GJwOi04RDEhtHADRB9uP/YrWY4bHvUNvWcOJX%2BzfK1vByMSVbgEYIgCZMBGOCr36c4x%2BgtrDt/%2BjYTp/o96Qtyzqcl3wcsV7EAkDHcyBGRe9uJwCguA%2BPXSd7/5dlWXXLeaW4IltDC6T6ISuAJgwGJAOAA%2BCgsvtHdtyVkH9O6olShlvlGxeQLkAnQ4Gw4KvzAACoKWj7HhzdcU/veulCLMuyDudT0iXohABowqBfMgCWuLsd6hkLRv7d%2BA3X9Ag/IeO8Z7Jz0iXohABoQn9A7ObGmuMkq9wDDIUEbd8/Gtj8/qGrQqJf%2BrzQQrV4uMAV4CYQAI2yLTviE/vrStZKjiX2iO3z7umd%2BMjYTukqWvSj9PSXZg9JV%2BEFUV/gnr6J%2BwYmB0U3RS%2B1Lz0jP0m0QgA0KuYPCH67jf0fiIv7gzdEBt%2BcGHlzfFSdT/0X%2Brv0jHQJmiEAGhWT%2B/hvWVaSAEC3BG1fyPb1%2BPwDgfCgPzweim4Jxbf2JLZKn4W%2BumOlzOlyVroKzRAAjYqKBkCJs03QgK9t2Stdgpi/Wj4hXYJ%2BVFzHqSksuuat8IQj4MqmyrknM3z/p2kEQKP8ogFQqrMCAK7oO0vHVfiWhHYIgEYFbMndzwpbQMAVnC3nf5yZla5CSwRAo/yiAVBiCwi4gm8uHqnz8b8lBECj/KJ/V6wAgMt6OjPH3b8tIwAaJfsRQ/YJG4CaMrXKn8y/LF2FxmgrjZJ9yJya990Asv504ZVUjSNSWkdbaVTNkVwBhGy/4KsDCno6M7ePW3/bQwA0qiocALxTwC8dLaYf5mSnttFWGiV7KxYBAJy3VC19dvp5vhrXPtpKo3KijxkK%2BXinAMuyrGK99gdnDyxzOpYbaCuNkg2AftFn0QCKKDv1P5p5gedju4XD4BqVq0kGgOzTKAEV5OrVPzh74OeFlHQh3sEKoFF1yynWxfYcBwgAmC1VK//emefo/u4iAJqQrIltO4ZsX8IflHp1QNZcpfDx0/tPsPPjNgKgCbLXndgFgpmezs797qmfzFTy0oV4ENcAmiAbAOsCkZMlHngEg5Sd%2Bn9fePXR1BnpQjyLFUATZB/MuyUcF3x1oMvOlHMfPf0s3b%2BjWAE0Yb5SEHz1yXBC8NWBrsnXq99dPv6D5GnZA7hMQAA0YVp0F5IAgOc5lvP4yvQ3F49wxFt3iAXAZHDbicpRqVdvzdmyZACsD0VDtq/MZyJ41IHc0jcXjxwrpaULETAZ3CbyuqwAmjBXKVQdR%2BrZkD7L3hyOHymaOD3gYRWn/kRm5nvJU6f4jkPXEQBNqFvOTCW/MRSTKmBnZJAAgGekauUfpqYeSZ1mw0cKAdCc46WMYADcHBv6XvKk1KtblvV4evrx9LQrv9V/WH/TbbF1rvxW0Eu6VnkmO/dkZvalfJJn%2BcoiAJpzrJh%2BW2JM6tWvjwxwGQCamq8Uns8vP5WZPVhYln28Es4jAJoje4UqZPuujww8n18SrAFo3Nly/lAhebiQfCm/vFAtSpeDixEAzTlaTDuWJXMV2LIsy7olNkwAQE3pWuVMOXu6nDtTzp4p5U6UMmzuK44AaE6uXj1VygrelPuWxOifL7zmsHOKrqg5TsWpX/QjX6%2BmquVkrZyqlpK1cqpWSlbLs5V8ulaRrhfNIQCadqiwLBgAw4Ge3dFBFgG4rPtPPj1VzklXAW1wFlDTDhWSsgW8s2%2B9bAEAvIEAaNqhfFJ2/2VPfCTmY%2BkGoF2SASB193ObUrXyUdG7sUK27x29E4IFAHCRYCdkBdCK53ILsgW8d3BL0Oa9A9AWmkgr9ksHwHCg511cCQDQHgKgFceK6UXpu1p%2BY3AriwAA7aCDtMKxrCcys7I1DAXC9/ZtkK0BgNYIgBbtS89Il2D95vC2QZ4UD6BVBECLTpQyp8vCx5fHfIH7R7bL1gBAX8IBoOk3Qc95fMWdg5Hb8eb46N74qHQVAFok2wNZAbTusfRZFU5mvn9ke8IflK4CgH4IgNZlapUnpS8FW5Y1EAj/3viNfqEHVQLQFwHQlkdSZ6RLsCzLujE6%2BNvrrpWuAoBmCIC2HCmuiJ8Nd857%2BjdxaxiAphAA7fru0nHpEl73wMh1t8aGpasAoA35AND6i0CWZT2fXzoiejbceQHbfmhi9574iHQhABoi3v3kA8ADvr10TLqE1wVs3%2B%2BP33in3GPrAWiEAHDB/tyCIlcCLMvy2/bHx3e9m1MiAKyFAHDH1xdeU%2BcpvT7L/tDodR8Z2xnitDgAV0aDcMdrxZWnFLgn4EL39E48vGnP%2BlBUuhAAilIiAMSvhLjizxdeK9Sr0lW8wZZw/Mub9vxa/0afxW1igFpU6HtKBIA3LFaL31o6Kl3FxSK%2BwAMjO76yec/1kQHpWgCohQBw0yPJM7KPC76SyXDi8xtv%2B9j4rrFgRLoWAKogANxUt5wvzx2uKHBC3GXdlRj/s8m3fGpi93WRfulaAMgjAFx2spT5y0XlNoLOsy37jvjIFza%2B6eFNt9/dOxHzBUTKCNv%2BuI8TTAFhMvP/UpPBbScq6vbNpnw/efLW2PCN0UHpQlZzTU/fR8f6qo7zYn7pmez8s9n5lVq50y8a9QVuig7dER/ZEx/p8fk7/XKAslS4AmypEwBe4ljWw7MvfWXzHf3%2BkHQtawjY9i2x4Vtiww%2BO7jhRyr5WTL1aWHmluHK2nHPltgbbskaCkclwYkekf0dP/7U9fRxbDaiDAOiIpWrpj6df/MMNt%2BrS73yWfVU4cVU4cW/fRsuycvXqVDk3XynMV4sLlcJ8pbhcK5XqtbJTL9VrRadWrtd9thW0/SHbF7J9IZ8vZPsT/uBQIDwU6Bl%2B/Z89G0MxPukDyiIAOuVQIfn1xdc0PaY/5gtc29N3bU%2BfdCEAOkihi8CKbIq56AfJU4%2Bn5Z8bDEAp6vQ6hQLAk/7L3OHn80vSVQDAZRAAnVV1nD%2BafvFYKSNdCABcjADouEK9%2BpmzB6bKOelCAOAN1AoAdbbG3JWslj459dPpcl66EADClOpyagWAhy1XS78/9dxMhQwAoAoCoHuWqqVPnHnuZCkrXQgAWJaCAaDU%2Bsh1y9XSJ87s/3khJV0IAAGq9TflAsDzcvXqQ1M/fTY7L10IANMRAALKTv0Pp1/8X8snpAsBYDQCQIZjOd9cPPL5mYMlpyZdCwBDqRgAqm2Tdc6TmdmPnd7PLQKACRTsbCoGgFFOlDIfOf3sYytnpQsBYBwCQF6xXvvK3OHPzxzM1CrStXhWulY5mF%2BWrgJQi6LHQXvpAWENejIzezC/fP/I9jsTY9K1eMpUOfeD5KkfpafLqj6rGSZQcP/HUjYAzLRSK39%2B5uDfpWceGN2xLtAjXY72Xsovfy956rncgitPNwO8hwBQzv7cwgsnlv7x4OR9g1vCNo/TalrVqT%2BVmfte8iSHsAKrUzcADNwFOq/s1L%2B9dOxvVqY%2BMHz123vHbUuP50qKO1HKPJY%2Buy89k%2BZqClSi5v6PpXIAYKlaenj20P9cPvH%2BoavuTIwSA1eSqVWeyMw8tjJ9rJSWrgXQCQGguqly7gszB7%2BzFL9vcMtbE2MBmy9uva7mOM/nl36Unv5Jdr7KBV6geUoHgMm7QBc5Xc4%2BPHvoG4tHfq1/46/2bUz4g9IViSk5tQO5pZ9k5/fnFrJs9UB5yu7/WIoHAC6yXC19a/Hod5eOvzkx%2Bs7e9TdEB83ZFcrUKs/lFp7Jzh/ILfKFTsAVBIB%2Byk59X3pmX3pmJBi5u3f8rYmxTaG4dFEdUXOco6X0wfzyC/mlQ4VkzeH7nICbVA8AdoFWMV8pfGfp%2BHeWjm8IxfbGR9%2BcGNka7tV9TeBYzrFi5mBh%2BWB%2B%2BXAhVahXpSsCWqfy/o%2BlfgCgEVPl3HeXj393%2BXi/P7Q7NnRzdGh3dGgwEJauq1HJaulYKXOslH61sHK4kMzR9IGusB8c%2BJR0DWtjEdCC0WBkR6R/e0//jkjf5lBcna8POZY1XykcK6WPFTPHSuljpUyyWpIuCnCf4h//LVYAHjZXKcxVCvvSM5Zl%2BW17Qyi2JRTfEk5sDMXGgtGxYKTH1/HbjKtOfa5SnKnkZyv52UphppKfKRdmK3mu4gIqIACMUHOcU6XsqVL2iczs%2BV8cCIRHA5GhQHggEOoPhAf84V5/MOoLnPsR8flDti9g%2B3y27bdsv21XHafq1Cu/%2BFF1nHM/KTm1lVo5Xaus1Mrp6i9%2BUiunauXlatmxuHILKEqPAOBScCckqyX2XoAOUX//x%2BJ5AABgLG0CQIs4BQBLn36lTQAAANxFAACAoXQKAF1WVQBMplGn0ikAAAAu0iwANIpWAAbSq0dpFgAAALfoFwB6BSwAc2jXnfQLAACAK7QMAO1iFoDn6diXtAwAAED7dA0AHcMWgFdp2pF0DQAAQJs0DgBNIxeAx%2BjbizQOAABAO/QOAH2DF4A3aN2F9A4AAEDLtA8AreMXgNZ07z/aBwAAoDVeCADdQxiAjjzQebwQAACAFngkADwQxQA04o2e45EAAAA0yzsB4I1ABqA%2Bz3Qb7wQAAKApngoAz8QyAGV5qc94KgAsb703AFTjsQ7jtQAAADTIgwHgsYgGoAjv9RYPBgAAoBHeDADvBTUAWZ7sKt4MAMuj7xYAEV7tJ54NAADA6rwcAF4NbQDd5OFO4uUAAACswuMB4OHoBtAF3u4hHg8Ay%2BvvH4DO8Xz38H4AAAAuy4gA8HyMA3CdCX3DiACwzHgvAbjFkI5hSgAAAC5iUAAYEukA2mROrzAoACyT3lcArTGqS5gVAJZh7y6AppjWH4wLAADAOSYGgGkhD6ARBnYGEwPAMvKdBrAKM3uCoQFgmfp%2BA7iUsd3A3AAAAMMZHQDGxj6A80zuA0YHgGX2ew/A8A5gegBYxo8AwFjMfQIAAAxFAFgWHwQA8zDrLQLgPEYDYA7m%2BzkEwC8xJgATMNPPIwDegJEBeBtz/EIEwMUYH4BXMbsvQgAAgKEIgMvgYwLgPczrSxEAl8dYAbyEGX1ZBMAVMWIAb2AuXwkBsBrGDaA7ZvEqCIA1MHoAfTF/V0cArI0xBOiImbsmAqAhjCRAL8zZRhAAjWI8AbpgtjaIAGgCowpQH/O0cQRAcxhbgMqYoU0hAJrGCAPUxNxsFgHQCsYZoBpmZQsIgBYx2gB1MB9bQwC0jjEHqICZ2DICoC2MPEAWc7AdBEC7GH%2BAFGZfmwgAFzAKge5j3rWPAHAHYxHoJmacKwgA1zAige5grrmFAHAT4xLoNGaZiwgAlzE6gc5hfrmLAHAfYxToBGaW6wiAjmCkAu5iTnVCQLoAzzo3Xk9UjkoXAuiN1t85rAA6i7ELtIMZ1FEEQMcxgoHWMHc6jQDoBsYx0CxmTRcQAF3CaAYax3zpDi4Cdw%2BXhYE10fq7iRVAtzG%2BgSthdnQZASCAUQ5cinnRfWwByWA7CDiP1i%2BFFYAkxj3ALBBEAAhj9MNkjH9ZbAHJYzsIBqL1q4AVgCqYDzAHo10RBIBCmBUwAeNcHWwBqYXtIHgYrV81rABUxDyB9zCqFcQKQFEsBeAZtH5lsQJQGjMHumMMq4wVgOpYCkBTtH71EQB6IAagEVq/LtgC0gnzCupjlGqEFYBmWApAWbR%2B7RAAWiIGoBRav6bYAtIYsw4qYBzqixWA3lgKQBCtX3cEgBcQA%2BgyWr83EADeQQygC2j9XkIAeA0xgA6h9XsPAeBNxABcROv3KgLAy4gBtInW720EgPcRA2gBrd8EBIApiAE0iNZvDgLALMQAVkHrNw0BYCJiABeh9ZuJADAXMQCL1m82AsB05%2Bc/SWAU%2Bj4sAgDnsSAwBK0f5xEAeAMWBF5F38elCABcHgsCz6D140oIAKyGBYG%2B6PtYEwGAhpAEuqDvo3EEAJpDEqiJvo8WEABoEUmgAvo%2B2kEAoF0X9iDCoAto%2BnALAQA3sSzoHPo%2BXEcAoCNYFriCpo%2BOIgDQcYRBU2j66BoCAF11UXcjDyw6PuQQAJBkZh7Q8aEIAgAKubQzeiASaPdQFgEApV22eyqbCvR66IUAgH7W7LMdSgj6OzyGAIAH0amBRvikCwAAyCAAAMBQBAAAGIoAAABDEQAAYCgCAAAMRQAAgKEIAAAwFAEAAIYiAADAUAQAABiKAAAAQxEAAGAoAgAADEUAAIChCAAAMBQBAACGIgAAwFAEAAAYigAAAEMRAABgKAIAAAxFAACAoQgAADAUAQAAhiIAAMBQBAAAGIoAAABDEQAAYCgCAAAMRQAAgKEIAAAwFAEAAIYiAADAUAQAABiKAAAAQxEAAGAoAgAADPX/AV5Rd0eIuQ1GAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAANI0lEQVR4nO2da4xcVR3Az71z5z2zj5nZZ7ft0naBLpSltETSCqKYYDHx8YVAgkbiByNINKIIgUDwg0hQY6L4gQ/GiEQbExNqCdqIwfAQ2kLdLW2h3bJ0Z9%2BP2bvznrkvP0wy2Wyny54597zu/H9f5z7O/M9v/udxzz2jPNj5OAKAZlF5FwCQGxAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIELjXQBRmDDGcU%2B5yr%2BLRknkohUFasKVzV%2Bn1axqFYHckgbrRq0gk5cFYibNZgrgVZk8KBB3bxpSL5XHTPKOQGJ6czkeM8kLAsmizjpqxZZdI4kFktSbdciekKQUyBvqrEPShCSZQJ5UZy3SaSTTowzP21NHom8qRwaSKKBuIUsqEl2gFlRnLeJrJHQT1uL21BE5DoJmIJFDxgVhU5GIGQjsuRICRkY4gQSMkVCIFh%2BBmjDRQiMsQjVnomQgsAcXQSImhECCxEI6RIgbf4FEiIK8cI8eZ4G4f38PwDeG3DrRoI6LcOxW88lAYA8NuESVg0BgDz3Yx5a1QGAPbRhHmP8oDJAapgJB%2BmEDyzizEwjsYQmzaDMSCOxhD5uYsxAI7OEFg8hTFwjs4Qvt%2BMMoDCCCrkCQfkSAai1QFAjsEQd6dUFLILBHNCjVCPSBACKoCATpR0xo1Iv7AoE9IuN67UATBhDhskCQfsTH3TqCDAQQ4aZAkH5kwcWack0gsEcu3KovaMIAItwRCNKPjLhSa5CBACJcEAjSj7yQ1x1kIIAIEAggglQgaL9kh7AGBdqhbPMoSNkSiOwMxrcFYyktlNJCSS0YUbWAogZUn19RLcc2HLvi2DnLyFnGilWZN0oLRildLUxUclnL4P0NvAORQIzTz0Aguj%2Ba2hdN7Q51hFTfBkdqiqopahihDl/g8k8zZuVcST9TXhkrrnxSyRGW6id9N9wa7yW8SA0HOYbjGI5dsAzdqmbMynS1mK7mz5ez6WreceUejZgwxpve2UOCDBT3%2BT8f77uzfWB7MObKBRNa8GC852C8ByG0ZJZPFJbeyM2dLq44iF4dbQoFKQFFCShqVNW6/eG1H2Ut4/3i0pu5%2BfcKS4Zj8yrh5QgtUEIL3p246s72Ab9Cq7Of0kKH2gcOtQ8smeXXsjOv6lNLZpnSvUho8/lvj/fdHu/Treorevrv%2BmRejIZYebDz8ebOpNp%2BBRXfvckdX%2BncHqCmTkNs5Ly4NP7XzMTmT3GxCds8Oct4cXn8VT3tYs5srhUTMQNdH%2B78fu91ff4I%2B1urSBkIRNnfF5e4z/9A9%2B5bot2/mjutW1WOJRFrHkhB6L7krme23szFHum4KZr85bbP8I1VkwLRaL9Cqu%2Bx/pF7kjsU1y/tXXr84We33tylhcgv1VydipKBQqrvp1v2HYj18C6IfCS04FNb9gaVjeY16CGEQAFFfbJ/73C4g3dBZGUwGP9Gis8/Hwgh0MN9e26IJHiXQm6%2B2rnNrXkyLJoZhbnbAfp65%2BBBspZr3iiNFTPjlWy6Wlg0ylmrWnVsy3GCqi%2BoqEkt2OUP9/sju0JtQ6E2r3bPFaTcm9j589lRkos0MSXNeRg/FGr7VmqouXMLtvladubY6tQnlXzDA0q2WUJIt6oX1zyv6NJCe6PJA7GeGyNJTWHdX//N/Jl/rk43/CisajFV2x6MDYc772jrT2pB3IsfiHd3LAQYj%2Bp5CqQg5YHuYR9%2BLVqOc0S/dDgz0cRs7KJZPrY6fWx1Ou7zfy7e%2B%2BWObVvFmPgp2WbJNhfN8snC0p%2BWxu/q2Hp/1xBW11hFym3x3iP6JL1CXg5Pgb7UPjAUasM9a84oPTs7dqG8Snj3nGUc1dNH9fRIJHFPYscekTphNnKO6pPny6s/G9i/8WPjddwYTTIWCLsT7VYHSFPUe5M7cM%2B6UM4%2BPPkuuT1rGS1mHps6%2BWj6xLmS7uJlyTlfXn1%2B4SzWKcOhDsKb4tYvt1HY7fG%2BBGYzP1nNPzF1cpVOG/9BaeXH6eO/mD29KNLD1Nezs1gLTmI%2Bf8MVLPTg1oR9rXM71vFF23x6%2BlTBNimVp8bruVlEukDITRyE3s4vDAbjmz%2Bl1x9h2Y/mk4EGg7FBzEmLFxY%2BmjdKlMojMucx2%2Bu4z0%2BpJA3hI9BnY3jrHz6u5F7LNh79ep4VEy%2BdYHW6yeEj0C2xbqzj/7x8kfNiQX4wn6vCg4NAUVXbHsSYesmYleOFRXrlERzcTnHZtiiVpCF4Arkyhr8m3K4gjJ/VW/l5y2nZBISuxRyZ54iXumLVMocMNBRsxzr%2BZGGJUknER0HKgThecz9nFCkVpiEcBOoLhD/9oDV85Oq0oVzc0da3LYAxXM1ZBuNnYRwE6tYwBJo3SoK8fsCea0Pt3%2B3ZjXXKubJOpyxXhMNEYpcfY/1la879%2BBTlrvat93ddjftSyqnCMqUiXQkOAkVVjJmuZbOCe/3H%2BkcIFxghhM6W9EfSxwkvgkVI9cVU/yDBcg4bOW/k5miUbQM4CBRUMX5VtJ9dMOahnuse6rmO0sXfzi2wf8WHQx8ogLPGxXCYzmrIi4Ocv2Qusr%2BvEGuiN6B1538wObIyeaWVmVThIFAVJ6lgpauW5VIl/8clPhs1cRCoYmNsLhFh%2B2hQRnSr%2BvTMqQqntp6DQAUbY14n6cY7lx5m0Sw/kj6%2BwG%2Byg4NASwbGkr8eP960dUsxWsz8cPLdmSrTZxfr4DCMnzfLezZ9cI8/HFa1krcG8%2BTkLeOl5YtH9TT3TbE4CDSH84tRELo61DZazNArj1ysWtVX9amX9UvkT91dgYNAFypZrONviqawBHpm5opvZ96T2HEfp3fICclZxqni8pu5%2BROFxVbf4u7Dku4gjAVBB2M9f1g83woTQg5CpmMbjl20zRWzmjEr00ZhslK4UFmdrFDcZJMEPIGu8u8iX1NWsM10Nb/5VQq9/vANkYQ3WrENXm0WB6zX4/nMRP83v4B1/N0J7FcQATbwEeit3DzW8SORxP5oilJhABL4CPRxJTdZxXtw872e4agq4pagLQ63h6kvr%2BDtAZDSQo/2jzSxlQdAFW4C/Ts7g7t4ZW8k%2BaPePew39QE2gJtAhmMfXv4Y96xb471Pb9nHeP8AYAOwBWr6Xzku5xU93cQSlpFI4reDB77Y1g%2BJiAa49ctzQZmNnN8tnG3iaU6HL/CD3uufHzxwqH0Aq2cdhMUhbsN5XHO2pL%2B0fPG%2BZDNZbVsg9mDP8He6d58prZwr6eOV7LxRWjbLZdsyHFtT1ICitvkCCS04EIjuCMZvjCS3BLy5wyZH%2BA%2BMDy9PDIc6b4ommztdU5SRSGJEpA3qWopmmjAXu0EIIQc5z8yOXijjPWEFaNBEzQqxqL5km09Ov3eJx5pwgBAhBEII5Szj0akTH5RWeBcEwEMUgRBCOct4Yuq9f7XqTmSS0qRA7naD6piO/eu5M8/NjvFdbmc49miR9Uvm3PHOPxb%2BJzd3urTy7a5rbov3Mp4tzFrGP1anjqxc4vs3gBIhokAIoYxZeW527G%2BZiW%2BmhvbRX8hhI%2Bd/hcyx7NQ7%2BUVTpAWj4tO8QK6sTtyYi5XcU9Pvbw1ED7Vv/UJbX8ztDWwNxx4rZt7OL7yTX6C0f7ksePl/49PVwguLH/5%2B6fyecOfNsa79kVQ/wYRywTbHy9kPy/pYMXOupFch35DR/N9%2BI8r//L0BMZ9/ZzC%2BM9jWFwintFBKC7X5AgFFDao%2Bv6JajmM6dtWxC7axalVXTWPRLM8ZxZlqcbKan2vJHas%2BFT4ZiEEr1pC8ZYwWM95YZi8CJGNqgeaBABkhFYjShBDADMIahAwEEAECAUS4IBC0YvJCXneQgQAi3BEIkpCMuFJrkIEAIlwTCJKQXLhVX25mIHBIFlysKWjCACJcFgiSkPi4W0eQgQAi3BcIkpDIuF47VDIQOCQmNOoFmjCACFoCQRISDUo1QjEDgUPiQK8u6DZh4JAIUK0F6AMBRFAXCJIQX2jHn0UGAod4wSDyjJowcIg9bGLOrg8EDrGEWbSZdqLBITawjDOMwgAiWAsESYg2jCPMIQOBQ/RgH1s%2BTRg4RAMuUeW2P1Dt2/LaIMZjcPxBcu5EQyoih28M%2BY/CwCESuEePv0BIgChIighxE0IgJEYs5EKQiAm0ySZ0qzeJIOrUECUD1REqOgIiWnyEEwiJFyNxEDAyAjVha4HmbB0CqlNDxAxUR9ioMUbkOAiageq0eCoSWZ0aogtUowU1El%2BdGkI3YeuQJabkSPRN5chAdTyfiiRSp4ZkAtXwpEbSqVNDSoFq1CMutUmSelNHYoHqSJqQZFenhhcEqiFLQvKGN3W8I1AdMU3ymDd1PChQnbV1xkUmr0qzFi8LtBZmMrWCNGtpFYHW0rCOm7Cq1VxpSCsK1BCwoTlkepQBCAgIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQMT/AeZbuEH3M6MjAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22maskable%22%7D%5D%7D">
+<meta name="theme-color" content="#6b117b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Galú Gestión">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAANI0lEQVR4nO2da4xcVR3Az71z5z2zj5nZZ7ft0naBLpSltETSCqKYYDHx8YVAgkbiByNINKIIgUDwg0hQY6L4gQ/GiEQbExNqCdqIwfAQ2kLdLW2h3bJ0Z9+P2bvznrkvP0wy2Wyny54597zu/H9f5z7O/M9v/udxzz2jPNj5OAKAZlF5FwCQGxAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIAIEAogAgQAiQCCACBAIIELjXQBRmDDGcU+5yr+LRknkohUFasKVzV+n1axqFYHckgbrRq0gk5cFYibNZgrgVZk8KBB3bxpSL5XHTPKOQGJ6czkeM8kLAsmizjpqxZZdI4kFktSbdciekKQUyBvqrEPShCSZQJ5UZy3SaSTTowzP21NHom8qRwaSKKBuIUsqEl2gFlRnLeJrJHQT1uL21BE5DoJmIJFDxgVhU5GIGQjsuRICRkY4gQSMkVCIFh+BmjDRQiMsQjVnomQgsAcXQSImhECCxEI6RIgbf4FEiIK8cI8eZ4G4f38PwDeG3DrRoI6LcOxW88lAYA8NuESVg0BgDz3Yx5a1QGAPbRhHmP8oDJAapgJB+mEDyzizEwjsYQmzaDMSCOxhD5uYsxAI7OEFg8hTFwjs4Qvt+MMoDCCCrkCQfkSAai1QFAjsEQd6dUFLILBHNCjVCPSBACKoCATpR0xo1Iv7AoE9IuN67UATBhDhskCQfsTH3TqCDAQQ4aZAkH5kwcWack0gsEcu3KovaMIAItwRCNKPjLhSa5CBACJcEAjSj7yQ1x1kIIAIEAggglQgaL9kh7AGBdqhbPMoSNkSiOwMxrcFYyktlNJCSS0YUbWAogZUn19RLcc2HLvi2DnLyFnGilWZN0oLRildLUxUclnL4P0NvAORQIzTz0Aguj+a2hdN7Q51hFTfBkdqiqopahihDl/g8k8zZuVcST9TXhkrrnxSyRGW6id9N9wa7yW8SA0HOYbjGI5dsAzdqmbMynS1mK7mz5ez6WreceUejZgwxpve2UOCDBT3+T8f77uzfWB7MObKBRNa8GC852C8ByG0ZJZPFJbeyM2dLq44iF4dbQoFKQFFCShqVNW6/eG1H2Ut4/3i0pu5+fcKS4Zj8yrh5QgtUEIL3p246s72Ab9Cq7Of0kKH2gcOtQ8smeXXsjOv6lNLZpnSvUho8/lvj/fdHu/Treorevrv+mRejIZYebDz8ebOpNp+BRXfvckdX+ncHqCmTkNs5Ly4NP7XzMTmT3GxCds8Oct4cXn8VT3tYs5srhUTMQNdH+78fu91ff4I+1urSBkIRNnfF5e4z/9A9+5bot2/mjutW1WOJRFrHkhB6L7krme23szFHum4KZr85bbP8I1VkwLRaL9Cqu+x/pF7kjsU1y/tXXr84We33tylhcgv1VydipKBQqrvp1v2HYj18C6IfCS04FNb9gaVjeY16CGEQAFFfbJ/73C4g3dBZGUwGP9Gis8/Hwgh0MN9e26IJHiXQm6+2rnNrXkyLJoZhbnbAfp65+BBspZr3iiNFTPjlWy6Wlg0ylmrWnVsy3GCqi+oqEkt2OUP9/sju0JtQ6E2r3bPFaTcm9j589lRkos0MSXNeRg/FGr7VmqouXMLtvladubY6tQnlXzDA0q2WUJIt6oX1zyv6NJCe6PJA7GeGyNJTWHdX//N/Jl/rk43/CisajFV2x6MDYc772jrT2pB3IsfiHd3LAQYj+p5CqQg5YHuYR9+LVqOc0S/dDgz0cRs7KJZPrY6fWx1Ou7zfy7e++WObVvFmPgp2WbJNhfN8snC0p+Wxu/q2Hp/1xBW11hFym3x3iP6JL1CXg5Pgb7UPjAUasM9a84oPTs7dqG8Snj3nGUc1dNH9fRIJHFPYscekTphNnKO6pPny6s/G9i/8WPjddwYTTIWCLsT7VYHSFPUe5M7cM+6UM4+PPkuuT1rGS1mHps6+Wj6xLmS7uJlyTlfXn1+4SzWKcOhDsKb4tYvt1HY7fG+BGYzP1nNPzF1cpVOG/9BaeXH6eO/mD29KNLD1Nezs1gLTmI+f8MVLPTg1oR9rXM71vFF23x6+lTBNimVp8bruVlEukDITRyE3s4vDAbjmz+l1x9h2Y/mk4EGg7FBzEmLFxY+mjdKlMojMucx2+u4z0+pJA3hI9BnY3jrHz6u5F7LNh79ep4VEy+dYHW6yeEj0C2xbqzj/7x8kfNiQX4wn6vCg4NAUVXbHsSYesmYleOFRXrlERzcTnHZtiiVpCF4Arkyhr8m3K4gjJ/VW/l5y2nZBISuxRyZ54iXumLVMocMNBRsxzr+ZGGJUknER0HKgThecz9nFCkVpiEcBOoLhD/9oDV85Oq0oVzc0da3LYAxXM1ZBuNnYRwE6tYwBJo3SoK8fsCea0Pt3+3ZjXXKubJOpyxXhMNEYpcfY/1la879+BTlrvat93ddjftSyqnCMqUiXQkOAkVVjJmuZbOCe/3H+kcIFxghhM6W9EfSxwkvgkVI9cVU/yDBcg4bOW/k5miUbQM4CBRUMX5VtJ9dMOahnuse6rmO0sXfzi2wf8WHQx8ogLPGxXCYzmrIi4Ocv2Qusr+vEGuiN6B1538wObIyeaWVmVThIFAVJ6lgpauW5VIl/8clPhs1cRCoYmNsLhFh+2hQRnSr+vTMqQqntp6DQAUbY14n6cY7lx5m0Sw/kj6+wG+yg4NASwbGkr8eP960dUsxWsz8cPLdmSrTZxfr4DCMnzfLezZ9cI8/HFa1krcG8+TkLeOl5YtH9TT3TbE4CDSH84tRELo61DZazNArj1ysWtVX9amX9UvkT91dgYNAFypZrONviqawBHpm5opvZ96T2HEfp3fICclZxqni8pu5+ROFxVbf4u7Dku4gjAVBB2M9f1g83woTQg5CpmMbjl20zRWzmjEr00ZhslK4UFmdrFDcZJMEPIGu8u8iX1NWsM10Nb/5VQq9/vANkYQ3WrENXm0WB6zX4/nMRP83v4B1/N0J7FcQATbwEeit3DzW8SORxP5oilJhABL4CPRxJTdZxXtw872e4agq4pagLQ63h6kvr+DtAZDSQo/2jzSxlQdAFW4C/Ts7g7t4ZW8k+aPePew39QE2gJtAhmMfXv4Y96xb471Pb9nHeP8AYAOwBWr6Xzku5xU93cQSlpFI4reDB77Y1g+JiAa49ctzQZmNnN8tnG3iaU6HL/CD3uufHzxwqH0Aq2cdhMUhbsN5XHO2pL+0fPG+ZDNZbVsg9mDP8He6d58prZwr6eOV7LxRWjbLZdsyHFtT1ICitvkCCS04EIjuCMZvjCS3BLy5wyZH+A+MDy9PDIc6b4ommztdU5SRSGJEpA3qWopmmjAXu0EIIQc5z8yOXijjPWEFaNBEzQqxqL5km09Ov3eJx5pwgBAhBEII5Szj0akTH5RWeBcEwEMUgRBCOct4Yuq9f7XqTmSS0qRA7naD6piO/eu5M8/NjvFdbmc49miR9Uvm3PHOPxb+Jzd3urTy7a5rbov3Mp4tzFrGP1anjqxc4vs3gBIhokAIoYxZeW527G+ZiW+mhvbRX8hhI+d/hcyx7NQ7+UVTpAWj4tO8QK6sTtyYi5XcU9Pvbw1ED7Vv/UJbX8ztDWwNxx4rZt7OL7yTX6C0f7ksePl/49PVwguLH/5+6fyecOfNsa79kVQ/wYRywTbHy9kPy/pYMXOupFch35DR/N9+I8r//L0BMZ9/ZzC+M9jWFwintFBKC7X5AgFFDao+v6JajmM6dtWxC7axalVXTWPRLM8ZxZlqcbKan2vJHas+FT4ZiEEr1pC8ZYwWM95YZi8CJGNqgeaBABkhFYjShBDADMIahAwEEAECAUS4IBC0YvJCXneQgQAi3BEIkpCMuFJrkIEAIlwTCJKQXLhVX25mIHBIFlysKWjCACJcFgiSkPi4W0eQgQAi3BcIkpDIuF47VDIQOCQmNOoFmjCACFoCQRISDUo1QjEDgUPiQK8u6DZh4JAIUK0F6AMBRFAXCJIQX2jHn0UGAod4wSDyjJowcIg9bGLOrg8EDrGEWbSZdqLBITawjDOMwgAiWAsESYg2jCPMIQOBQ/RgH1s+TRg4RAMuUeW2P1Dt2/LaIMZjcPxBcu5EQyoih28M+Y/CwCESuEePv0BIgChIighxE0IgJEYs5EKQiAm0ySZ0qzeJIOrUECUD1REqOgIiWnyEEwiJFyNxEDAyAjVha4HmbB0CqlNDxAxUR9ioMUbkOAiageq0eCoSWZ0aogtUowU1El+dGkI3YeuQJabkSPRN5chAdTyfiiRSp4ZkAtXwpEbSqVNDSoFq1CMutUmSelNHYoHqSJqQZFenhhcEqiFLQvKGN3W8I1AdMU3ymDd1PChQnbV1xkUmr0qzFi8LtBZmMrWCNGtpFYHW0rCOm7Cq1VxpSCsK1BCwoTlkepQBCAgIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQAQIBBABAgFEgEAAESAQQMT/AeZbuEH3M6MjAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -150,15 +156,21 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--lilac);border-co
 
 <script>
 /* ============ CAPA CENTRALIZADA DE ALMACENAMIENTO (DB) ============
-   Diseñada para poder migrarse después a un backend real (Supabase/Firebase/Postgres)
-   sin tocar el resto de la app: toda lectura/escritura pasa por DB.load()/DB.save().
-   - localStorage es la fuente de verdad confiable (funciona siempre, incluso fuera de Claude.ai).
-   - window.storage (si existe, ej. dentro de Claude.ai) se usa como respaldo adicional "best effort".
+   Fuente principal de verdad: Supabase (Postgres en la nube) — así los datos son
+   los mismos sin importar desde qué dispositivo/navegador entres.
+   localStorage funciona como caché local: permite que la app cargue instantáneo y
+   siga funcionando aunque no haya internet en ese momento; se sincroniza con Supabase
+   en segundo plano.
 */
+const SUPABASE_URL = 'https://tpmjpaiqgkbximkckzdz.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbWpwYWlxZ2tieGlta2NremR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDM0MTYsImV4cCI6MjEwMzYxOTQxNn0.rFY6EbXkw4Bff10tanwNETcEipArxyMq4Pr3wfBnzjw';
+
 const DB = {
   KEY_CURRENT: 'galu_erp_v2',
   KEY_LEGACY: 'galu_state_v1', // clave usada por una versión anterior — se migra si se encuentra
   hasCloud: (typeof window !== 'undefined' && !!window.storage),
+  hasSupabase: !!(SUPABASE_URL && SUPABASE_ANON_KEY),
+  SUPABASE_TIMEOUT_MS: 6000,
 
   readLocal(key){
     try{ const raw = localStorage.getItem(key); return raw? JSON.parse(raw): null; }
@@ -179,8 +191,46 @@ const DB = {
     catch(e){ return false; }
   },
 
-  // Carga: localStorage actual -> nube actual -> localStorage antiguo -> nube antigua -> null
+  // ---- Supabase: fuente de verdad para sincronizar entre dispositivos ----
+  async readSupabase(){
+    if(!this.hasSupabase) return null;
+    try{
+      const ctrl = new AbortController();
+      const t = setTimeout(()=>ctrl.abort(), this.SUPABASE_TIMEOUT_MS);
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/app_state?id=eq.1&select=data`, {
+        headers:{ 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+        signal: ctrl.signal
+      });
+      clearTimeout(t);
+      if(!res.ok) return null;
+      const rows = await res.json();
+      return (rows && rows[0] && rows[0].data) ? rows[0].data : null;
+    }catch(e){ console.warn('Supabase no disponible, usando datos locales.', e); return null; }
+  },
+  async writeSupabase(obj){
+    if(!this.hasSupabase) return false;
+    try{
+      const ctrl = new AbortController();
+      const t = setTimeout(()=>ctrl.abort(), this.SUPABASE_TIMEOUT_MS);
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/app_state`, {
+        method:'POST',
+        headers:{
+          'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type':'application/json', 'Prefer':'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({id:1, data: obj, updated_at: new Date().toISOString()}),
+        signal: ctrl.signal
+      });
+      clearTimeout(t);
+      return res.ok;
+    }catch(e){ console.warn('No se pudo sincronizar con Supabase (se guardó localmente).', e); return false; }
+  },
+
+  // Carga: Supabase (fuente de verdad) -> caché local -> claves antiguas (migración) -> null
   async load(){
+    const remote = await this.readSupabase();
+    if(remote){ this.writeLocal(this.KEY_CURRENT, remote); return remote; }
+
     let data = this.readLocal(this.KEY_CURRENT);
     if(data) return data;
     data = await this.readCloud(this.KEY_CURRENT);
@@ -194,8 +244,9 @@ const DB = {
 
   async save(obj){
     const okLocal = this.writeLocal(this.KEY_CURRENT, obj);
-    const okCloud = await this.writeCloud(this.KEY_CURRENT, obj);
-    return okLocal || okCloud;
+    const okSupabase = await this.writeSupabase(obj);
+    if(!okSupabase) this.writeCloud(this.KEY_CURRENT, obj); // respaldo adicional si Supabase falla
+    return okLocal || okSupabase;
   }
 };
 
@@ -225,6 +276,29 @@ async function loadState(){
       nombre:'Galú Pastelería', nit:'', telefono:'310 353 0008', correo:'',
       direccion:'', redes:'@galu_pasteleria_col', ciudad:'Cali, Valle del Cauca'
     };
+    if(!STATE.movimientosCaja) STATE.movimientosCaja = [];
+
+    // Fusiona insumos de referencia que aún no tengas registrados (por nombre, sin duplicar
+    // ni tocar los que ya tienes con tu stock/precio real). Corre en cada carga, así que
+    // cualquier insumo nuevo que yo agregue al catálogo de referencia te llega automáticamente.
+    (function fusionarInsumosReferencia(){
+      const nombresExistentes = new Set(STATE.insumos.map(i=> i.nombre.trim().toLowerCase()));
+      let agregados = [];
+      insumosDeReferencia().forEach(ref=>{
+        const clave = ref.nombre.trim().toLowerCase();
+        if(!nombresExistentes.has(clave)){
+          STATE.insumos.push({...ref, id: uid('i')}); // id nuevo, propio de tu catálogo
+          nombresExistentes.add(clave);
+          agregados.push(ref.nombre);
+        }
+      });
+      if(agregados.length>0) logChange(`Se agregaron ${agregados.length} insumos nuevos del catálogo de referencia: ${agregados.join(', ')}.`);
+    })();
+    STATE.productos.forEach(p=> p.variantes.forEach(v=>{
+      if(v.rendimientoCantidad===undefined) v.rendimientoCantidad = 1;
+      if(v.rendimientoUnidad===undefined) v.rendimientoUnidad = 'unidades';
+    }));
+    STATE.producciones.forEach(pr=>{ if(pr.insumosConsumidos===undefined) pr.insumosConsumidos = null; }); // marca producciones antiguas (no se pueden editar con precisión, solo eliminar)
     STATE.ventas.forEach(v=>{ if(!v.estado || !ESTADOS_PEDIDO.includes(v.estado)) v.estado = 'Confirmado'; });
     // migración: pedidos antiguos guardaban cliente como texto libre en vez de clienteId
     STATE.ventas.forEach(v=>{
@@ -255,39 +329,65 @@ async function persist(immediate){
   if(immediate){ await doSave(); } else { SAVE_TIMER = setTimeout(doSave, 250); }
 }
 /* ============ DATOS SEMILLA (migrados del Excel) ============ */
-function seedState(){
-  const insumos = [
-    {id:'i1',nombre:'Mantequilla Astra (T)',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:6400,proveedor:'La Mansión de la Repostería',perecedero:true,stock:500},
-    {id:'i2',nombre:'Mantequilla Astra (Cr)',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:6400,proveedor:'La Mansión de la Repostería',perecedero:true,stock:500},
-    {id:'i3',nombre:'Azúcar Blanco',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:2500,precioCompra:10500,proveedor:'D1',perecedero:false,stock:2500},
-    {id:'i4',nombre:'Azúcar Moreno',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:2600,proveedor:'D1',perecedero:false,stock:500},
-    {id:'i5',nombre:'Huevos',categoria:'MATERIA PRIMA',unidad:'unid',cantCompra:30,precioCompra:12000,proveedor:'D1',perecedero:true,stock:30},
-    {id:'i6',nombre:'Harina de trigo',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:1600,proveedor:'D1',perecedero:false,stock:500},
-    {id:'i7',nombre:'Polvo de hornear',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:250,precioCompra:3900,proveedor:'La Mansión de la Repostería',perecedero:false,stock:250},
-    {id:'i8',nombre:'Leche',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:900,precioCompra:3650,proveedor:'D1',perecedero:true,stock:900},
-    {id:'i9',nombre:'Esencia de Vainilla',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:15100,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
-    {id:'i10',nombre:'Esencia de Naranja',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:30300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
-    {id:'i11',nombre:'Sal',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:2700,proveedor:'D1',perecedero:false,stock:500},
-    {id:'i12',nombre:'Oreo',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:15900,proveedor:'D1',perecedero:false,stock:500},
-    {id:'i13',nombre:'Arequipe',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:16800,proveedor:'La Mansión de la Repostería',perecedero:true,stock:1000},
-    {id:'i14',nombre:'Azúcar pulverizada',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:3800,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
-    {id:'i15',nombre:'Cocoa',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:250,precioCompra:16300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:250},
-    {id:'i16',nombre:'Glaseado de fresa',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:8300,proveedor:'La Mansión de la Repostería',perecedero:true,stock:1000},
-    {id:'i17',nombre:'Premezcla chantilly',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:22300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:1000},
-    {id:'i18',nombre:'Chocolate líquido',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:33500,proveedor:'La Mansión de la Repostería',perecedero:false,stock:1000},
-    {id:'i19',nombre:'Aceite',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:900,precioCompra:9980,proveedor:'D1',perecedero:false,stock:900},
-    {id:'i20',nombre:'Maicena',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:3200,proveedor:'D1',perecedero:false,stock:500},
-    {id:'i21',nombre:'Lechera',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:300,precioCompra:3990,proveedor:'D1',perecedero:true,stock:300},
-    {id:'i22',nombre:'Crema de Leche',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:200,precioCompra:2300,proveedor:'D1',perecedero:true,stock:200},
-    {id:'i23',nombre:'Milo',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:150,precioCompra:8500,proveedor:'D1',perecedero:false,stock:150},
-    {id:'i24',nombre:'Desmoldante',categoria:'DESMOLDE',unidad:'g',cantCompra:500,precioCompra:2917,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
-    {id:'i25',nombre:'Papel encerado',categoria:'DESMOLDE',unidad:'m',cantCompra:20,precioCompra:8600,proveedor:'La Mansión de la Repostería',perecedero:false,stock:20},
-    {id:'i26',nombre:'Caja torta',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:2800,proveedor:'La Mansión de la Repostería',perecedero:false,stock:10},
-    {id:'i27',nombre:'Blonda',categoria:'EMPAQUE',unidad:'unid',cantCompra:6,precioCompra:1650,proveedor:'La Mansión de la Repostería',perecedero:false,stock:6},
-    {id:'i28',nombre:'Caja individual cupcake',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:1200,proveedor:'La Mansión de la Repostería',perecedero:false,stock:6},
-    {id:'i29',nombre:'Capacillos',categoria:'EMPAQUE',unidad:'unid',cantCompra:1000,precioCompra:25000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:1000},
-    {id:'i30',nombre:'Cúpula',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:1600,proveedor:'La Mansión de la Repostería',perecedero:false,stock:5},
+function insumosDeReferencia(){
+  return [
+    // MATERIA PRIMA — actualizado según tu inventario real más reciente
+    {id:'i1',nombre:'Mantequilla 5A',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:6400,proveedor:'La Mansión de la Repostería',perecedero:true,stock:1920},
+    {id:'i2',nombre:'Azúcar Blanco',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:2500,precioCompra:10500,proveedor:'D1',perecedero:false,stock:3743},
+    {id:'i3',nombre:'Azúcar Moreno',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:2600,proveedor:'D1',perecedero:false,stock:1118},
+    {id:'i4',nombre:'Huevos AA',categoria:'MATERIA PRIMA',unidad:'unid',cantCompra:30,precioCompra:16000,proveedor:'La Mansión de la Repostería',perecedero:true,stock:26},
+    {id:'i5',nombre:'Harina de trigo',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:1600,proveedor:'D1',perecedero:false,stock:0},
+    {id:'i6',nombre:'Polvo de hornear',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:250,precioCompra:3900,proveedor:'La Mansión de la Repostería',perecedero:false,stock:125},
+    {id:'i7',nombre:'Leche',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:900,precioCompra:6500,proveedor:'D1',perecedero:true,stock:840},
+    {id:'i8',nombre:'Esencia de Vainilla',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:15100,proveedor:'La Mansión de la Repostería',perecedero:false,stock:292.5},
+    {id:'i9',nombre:'Esencia de Naranja',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:30300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:300},
+    {id:'i10',nombre:'Sal',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:2700,proveedor:'D1',perecedero:false,stock:494},
+    {id:'i11',nombre:'Oreo Triturada',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:16400,proveedor:'La Mansión de la Repostería',perecedero:false,stock:300},
+    {id:'i12',nombre:'Arequipe',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:19800,proveedor:'La Mansión de la Repostería',perecedero:true,stock:700},
+    {id:'i13',nombre:'Azúcar pulverizada',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:3800,proveedor:'La Mansión de la Repostería',perecedero:false,stock:1480},
+    {id:'i14',nombre:'Cocoa',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:250,precioCompra:16300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:436},
+    {id:'i15',nombre:'Glaseado de fresa',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:8300,proveedor:'La Mansión de la Repostería',perecedero:true,stock:1000},
+    {id:'i16',nombre:'Premezcla chantilly',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:22300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:1000},
+    {id:'i17',nombre:'Chocolate líquido',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:42000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:950},
+    {id:'i18',nombre:'Aceite',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:900,precioCompra:9980,proveedor:'D1',perecedero:false,stock:900},
+    {id:'i19',nombre:'Maicena',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:3200,proveedor:'D1',perecedero:false,stock:543},
+    {id:'i20',nombre:'Lechera',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:300,precioCompra:3990,proveedor:'D1',perecedero:true,stock:300},
+    {id:'i21',nombre:'Crema de Leche',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:200,precioCompra:2300,proveedor:'D1',perecedero:true,stock:200},
+    {id:'i22',nombre:'Milo',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:150,precioCompra:8500,proveedor:'D1',perecedero:false,stock:180},
+    {id:'i23',nombre:'Mantequilla Colácteos',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:22100,proveedor:'La Mansión de la Repostería',perecedero:true,stock:524},
+    {id:'i24',nombre:'Cobertura Chocolate Blanco',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:50500,proveedor:'La Mansión de la Repostería',perecedero:false,stock:610},
+    {id:'i25',nombre:'Queso Crema',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:230,precioCompra:6500,proveedor:'La Mansión de la Repostería',perecedero:true,stock:180},
+    {id:'i26',nombre:'Galleta Oreo Entera',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:432,precioCompra:15900,proveedor:'La Mansión de la Repostería',perecedero:false,stock:344},
+    {id:'i27',nombre:'Cocoa Alcalina',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:20000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:495},
+    {id:'i28',nombre:'Panacrema Kinder',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:125,precioCompra:11800,proveedor:'La Mansión de la Repostería',perecedero:false,stock:125},
+    {id:'i29',nombre:'Panacrema Frambuesa',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:125,precioCompra:22000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:125},
+    {id:'i30',nombre:'Contenedores Cuadrados',categoria:'MATERIA PRIMA',unidad:'unid',cantCompra:10,precioCompra:6300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:30},
+    {id:'i31',nombre:'Maní Triturado',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:15300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:135},
+    {id:'i32',nombre:'Semillas de Amapola',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:0,proveedor:'La Mansión de la Repostería',perecedero:false,stock:115},
+    {id:'i33',nombre:'Coco deshidratado',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:250,precioCompra:0,proveedor:'La Mansión de la Repostería',perecedero:false,stock:250},
+    {id:'i34',nombre:'Chips de Chocolate de Leche',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:0,proveedor:'La Mansión de la Repostería',perecedero:false,stock:121},
+    {id:'i35',nombre:'Esencia de Coco',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:25100,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
+    {id:'i36',nombre:'Esencia de Banano',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:18200,proveedor:'La Mansión de la Repostería',perecedero:false,stock:500},
+    {id:'i37',nombre:'Esencia de Arequipe',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:500,precioCompra:18200,proveedor:'La Mansión de la Repostería',perecedero:false,stock:480},
+    {id:'i38',nombre:'Cobertura de Chocolate de Leche',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:500,precioCompra:26300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:108},
+    {id:'i39',nombre:'Crema Pastelera',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:1000,precioCompra:22300,proveedor:'La Mansión de la Repostería',perecedero:false,stock:490},
+    {id:'i47',nombre:'Maracuya',categoria:'MATERIA PRIMA',unidad:'unid',cantCompra:1,precioCompra:2500,proveedor:'',perecedero:false,stock:4.5},
+    {id:'i48',nombre:'Bicarbonato de Sodio',categoria:'MATERIA PRIMA',unidad:'g',cantCompra:200,precioCompra:2300,proveedor:'D1',perecedero:false,stock:198.5},
+    {id:'i49',nombre:'Colorante Rojo',categoria:'MATERIA PRIMA',unidad:'ml',cantCompra:10,precioCompra:8400,proveedor:'La Mansión de la Repostería',perecedero:false,stock:10},
+    // DESMOLDE
+    {id:'i40',nombre:'Desmoldante',categoria:'DESMOLDE',unidad:'ml',cantCompra:250,precioCompra:8500,proveedor:'La Mansión de la Repostería',perecedero:false,stock:240},
+    {id:'i41',nombre:'Papel encerado',categoria:'DESMOLDE',unidad:'m',cantCompra:20,precioCompra:8600,proveedor:'La Mansión de la Repostería',perecedero:false,stock:19.299},
+    // EMPAQUE
+    {id:'i42',nombre:'Caja torta',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:2800,proveedor:'La Mansión de la Repostería',perecedero:false,stock:2},
+    {id:'i43',nombre:'Blonda',categoria:'EMPAQUE',unidad:'unid',cantCompra:10,precioCompra:2400,proveedor:'La Mansión de la Repostería',perecedero:false,stock:10},
+    {id:'i44',nombre:'Caja individual cupcake',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:1000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:23},
+    {id:'i45',nombre:'Capacillos',categoria:'EMPAQUE',unidad:'unid',cantCompra:100,precioCompra:4000,proveedor:'La Mansión de la Repostería',perecedero:false,stock:174},
+    {id:'i46',nombre:'Cúpula',categoria:'EMPAQUE',unidad:'unid',cantCompra:1,precioCompra:1600,proveedor:'La Mansión de la Repostería',perecedero:false,stock:10},
   ];
+}
+
+function seedState(){
+  const insumos = insumosDeReferencia();
 
   const equipos = [
     {id:'e1',nombre:'Horno a gas empotrado',precioCompra:1000000,vidaUtilMeses:120,pctUso:1,obs:'Equipo principal'},
@@ -314,84 +414,91 @@ function seedState(){
 
   const productos = [
     {id:'p1',nombre:'Torta Vainilla',variantes:[
-      {id:'v1',nombre:'Clásica (sin decoración)',precioVenta:22500,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
-      {id:'v2',nombre:'Con Arequipe',precioVenta:26000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i13',150),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
-      {id:'v3',nombre:'Con Buttercream',precioVenta:32000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i2',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i13',100,'i14',300),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+      // Confirmado exacto según tus capturas de pantalla (Recetas y Costeo)
+      {id:'v1',nombre:'Vainilla sin decoración',precioVenta:25000,pctGanancia:.5,manoObraTipoId:'mo1',
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',30,'i8',10,'i10',3,'i1',3),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)}, // desmolde/empaque no visibles en capturas — se mantiene el estimado anterior
+      {id:'v2',nombre:'Vainilla decorada con arequipe',precioVenta:35000,pctGanancia:.5,manoObraTipoId:'mo1',
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',30,'i8',10,'i10',3,'i12',250),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
+      {id:'v3',nombre:'Vainilla decorada buttercream',precioVenta:30000,pctGanancia:.5,manoObraTipoId:'mo1',
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',30,'i8',10,'i10',3,'i13',250,'i1',125),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
     ]},
     {id:'p2',nombre:'Torta Chocolate',variantes:[
       {id:'v4',nombre:'Clásica (sin decoración)',precioVenta:27000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i15',7,'i18',75),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i14',7,'i17',75),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v5',nombre:'Con Chocolate Cremoso',precioVenta:36500,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i12',30,'i13',150,'i15',7,'i18',175),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i11',30,'i12',150,'i14',7,'i17',175),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v6',nombre:'Con Buttercream',precioVenta:42500,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i2',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i12',60,'i13',100,'i14',300,'i15',7,'i18',175),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i11',60,'i12',100,'i13',300,'i14',7,'i17',175),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
     ]},
     {id:'p3',nombre:'Torta Naranja',variantes:[
       {id:'v7',nombre:'Clásica (sin decoración)',precioVenta:24500,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i10',5,'i11',3,'i12',30),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i9',5,'i10',3,'i11',30),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v8',nombre:'Con Arequipe',precioVenta:28000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i10',5,'i11',3,'i12',30,'i13',150),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i9',5,'i10',3,'i11',30,'i12',150),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v9',nombre:'Con Buttercream',precioVenta:35000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i2',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i10',5,'i11',3,'i12',60,'i13',100,'i14',300),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i9',5,'i10',3,'i11',60,'i12',100,'i13',300),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
     ]},
     {id:'p4',nombre:'Torta Oreo',variantes:[
       {id:'v10',nombre:'Clásica (sin decoración)',precioVenta:24000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i12',30),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i11',30),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v11',nombre:'Con Arequipe/Chocolate',precioVenta:32000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i12',30,'i18',150),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i11',30,'i17',150),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
       {id:'v12',nombre:'Con Buttercream',precioVenta:35000,pctGanancia:.4,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i2',200,'i3',150,'i5',3,'i6',150,'i7',3,'i8',75,'i9',5,'i11',3,'i12',60,'i14',400),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i26',1,'i27',1)},
+        recetaMP:R('i1',150,'i1',200,'i2',150,'i4',3,'i5',150,'i6',3,'i7',75,'i8',5,'i10',3,'i11',60,'i13',400),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i42',1,'i43',1)},
     ]},
     {id:'p5',nombre:'Cupcakes Naranja Rellenos de Arequipe',variantes:[
       {id:'v13',nombre:'x6 sin decoración',precioVenta:24000,pctGanancia:.5,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i3',250,'i5',4,'i6',250,'i7',10,'i8',125,'i10',10,'i11',3,'i13',150),
-        recetaDesmolde:[], recetaEmpaque:R('i28',6,'i29',6)},
+        recetaMP:R('i1',150,'i2',250,'i4',4,'i5',250,'i6',10,'i7',125,'i9',10,'i10',3,'i12',150),
+        recetaDesmolde:[], recetaEmpaque:R('i44',6,'i45',6)},
       {id:'v14',nombre:'x6 con decoración (buttercream)',precioVenta:28000,pctGanancia:.5,manoObraTipoId:'mo1',
-        recetaMP:R('i1',150,'i2',200,'i3',250,'i5',4,'i6',250,'i7',10,'i8',125,'i10',10,'i11',3,'i13',150,'i14',400),
-        recetaDesmolde:[], recetaEmpaque:R('i28',6,'i29',6)},
+        recetaMP:R('i1',150,'i1',200,'i2',250,'i4',4,'i5',250,'i6',10,'i7',125,'i9',10,'i10',3,'i12',150,'i13',400),
+        recetaDesmolde:[], recetaEmpaque:R('i44',6,'i45',6)},
     ]},
     {id:'p6',nombre:'Flan de Leche Condensada',variantes:[
       {id:'v15',nombre:'Clásico',precioVenta:42000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',240,'i5',7,'i8',500,'i9',5,'i21',400),
-        recetaDesmolde:[], recetaEmpaque:R('i30',1,'i27',1)},
+        recetaMP:R('i2',240,'i4',7,'i7',500,'i8',5,'i20',400),
+        recetaDesmolde:[], recetaEmpaque:R('i46',1,'i43',1)},
       {id:'v16',nombre:'Con dec. arequipe',precioVenta:46000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',240,'i5',7,'i8',500,'i9',5,'i13',200,'i21',400),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i30',1,'i27',1)},
+        recetaMP:R('i2',240,'i4',7,'i7',500,'i8',5,'i12',200,'i20',400),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i46',1,'i43',1)},
     ]},
     {id:'p7',nombre:'Torta de 3 Leches Cuchareable',variantes:[
       {id:'v17',nombre:'Sencilla — tradicional',precioVenta:42000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',75,'i5',3,'i6',75,'i7',3,'i8',350,'i9',5,'i11',3,'i17',200,'i20',15,'i21',150,'i22',150),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i30',1)},
+        recetaMP:R('i2',75,'i4',3,'i5',75,'i6',3,'i7',350,'i8',5,'i10',3,'i16',200,'i19',15,'i20',150,'i21',150),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i46',1)},
       {id:'v18',nombre:'Sencilla — sabor MILO',precioVenta:46000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',75,'i5',3,'i6',75,'i7',3,'i8',350,'i9',5,'i11',3,'i17',200,'i20',15,'i21',150,'i22',150,'i23',50),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i30',1)},
+        recetaMP:R('i2',75,'i4',3,'i5',75,'i6',3,'i7',350,'i8',5,'i10',3,'i16',200,'i19',15,'i20',150,'i21',150,'i22',50),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i46',1)},
       {id:'v19',nombre:'Con Topping — tradicional',precioVenta:45000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',75,'i5',3,'i6',75,'i7',3,'i8',350,'i9',5,'i11',3,'i13',100,'i17',200,'i20',15,'i21',150,'i22',150),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i30',1,'i27',1)},
+        recetaMP:R('i2',75,'i4',3,'i5',75,'i6',3,'i7',350,'i8',5,'i10',3,'i12',100,'i16',200,'i19',15,'i20',150,'i21',150),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i46',1,'i43',1)},
       {id:'v20',nombre:'Con Topping — sabor MILO',precioVenta:49000,pctGanancia:.4,manoObraTipoId:'mo2',
-        recetaMP:R('i3',75,'i5',3,'i6',75,'i7',3,'i8',350,'i9',5,'i11',3,'i13',100,'i17',200,'i20',15,'i21',150,'i22',150,'i23',50),
-        recetaDesmolde:R('i24',15,'i25',0.02), recetaEmpaque:R('i30',1,'i27',1)},
+        recetaMP:R('i2',75,'i4',3,'i5',75,'i6',3,'i7',350,'i8',5,'i10',3,'i12',100,'i16',200,'i19',15,'i20',150,'i21',150,'i22',50),
+        recetaDesmolde:R('i40',15,'i41',0.02), recetaEmpaque:R('i46',1,'i43',1)},
     ]},
   ];
 
+  // Rendimiento por defecto: 1 lote = 1 unidad vendible (ajústalo en Recetas si un lote rinde más, ej. galletas)
+  productos.forEach(p=> p.variantes.forEach(v=>{
+    if(v.rendimientoCantidad===undefined) v.rendimientoCantidad = 1;
+    if(v.rendimientoUnidad===undefined) v.rendimientoUnidad = 'unidades';
+  }));
+
   return {
     insumos, equipos, manoObraTipos, productos,
-    compras:[], producciones:[], ventas:[], mermas:[], clientes:[], facturas:[],
+    compras:[], producciones:[], ventas:[], mermas:[], clientes:[], facturas:[], movimientosCaja:[],
     inventarioProductoTerminado:{}, // varianteId -> cantidad
     config:{
       pedidosPromedioMes:30,
@@ -415,7 +522,7 @@ const todayISO = ()=> new Date().toISOString().slice(0,10);
 function insumoById(id){ return STATE.insumos.find(x=>x.id===id); }
 function equipoById(id){ return STATE.equipos.find(x=>x.id===id); }
 function manoObraById(id){ return STATE.manoObraTipos.find(x=>x.id===id); }
-function precioUnitario(insumo){ return insumo.cantCompra ? insumo.precioCompra / insumo.cantCompra : 0; }
+function precioUnitario(insumo){ return (insumo && insumo.cantCompra) ? insumo.precioCompra / insumo.cantCompra : 0; }
 
 function depreciacionMensualTotal(){
   return STATE.equipos.reduce((s,e)=> s + (e.vidaUtilMeses? (e.precioCompra/e.vidaUtilMeses)*e.pctUso : 0), 0);
@@ -432,17 +539,29 @@ function costearVariante(variante){
   const em = variante.recetaEmpaque.reduce((s,r)=> s + r.cantidad * precioUnitario(insumoById(r.insumoId)), 0);
   const dep = depreciacionPorPedido();
   const mo = manoObraById(variante.manoObraTipoId)?.tarifa || 0;
-  const neto = mp+de+em+dep+mo;
-  const sugerido = neto * (1 + (variante.pctGanancia||0));
-  const margenReal = variante.precioVenta - neto;
+  const neto = mp+de+em+dep+mo; // costo de UN lote/receta completa
+  const rendCant = variante.rendimientoCantidad || 1;
+  const netoUnidad = neto / rendCant; // costo por unidad vendible (ej. por galleta, si el lote rinde varias)
+  const sugerido = netoUnidad * (1 + (variante.pctGanancia||0));
+  const margenReal = variante.precioVenta - netoUnidad;
   const margenPct = variante.precioVenta ? margenReal/variante.precioVenta : 0;
-  return {mp,de,em,dep,mo,neto,sugerido,margenReal,margenPct};
+  return {mp,de,em,dep,mo,neto,netoUnidad,rendCant,sugerido,margenReal,margenPct};
 }
 
 function allVariantesFlat(){
   const out = [];
   STATE.productos.forEach(p=> p.variantes.forEach(v=> out.push({producto:p, variante:v})));
   return out;
+}
+
+function productosQueUsanInsumo(insumoId){
+  const nombres = [];
+  allVariantesFlat().forEach(({producto,variante})=>{
+    const usado = [...variante.recetaMP, ...variante.recetaDesmolde, ...variante.recetaEmpaque]
+      .some(r=> r.insumoId===insumoId);
+    if(usado) nombres.push(producto.nombre+' — '+variante.nombre);
+  });
+  return nombres;
 }
 
 function inventarioCantidad(varianteId){ return STATE.inventarioProductoTerminado[varianteId] || 0; }
@@ -455,6 +574,87 @@ function showToast(msg){
   clearTimeout(TOAST_TIMER);
   TOAST_TIMER = setTimeout(()=>{ el.style.display='none'; }, 2600);
 }
+
+/* Confirmación propia de la app (no usa window.confirm, que puede quedar bloqueado
+   dentro de un iframe o vista incrustada y hacer que los botones "no hagan nada"). */
+function askConfirm(mensaje){
+  return new Promise((resolve)=>{
+    const bg = document.createElement('div');
+    bg.className = 'modal-bg';
+    bg.innerHTML = `
+      <div class="modal" style="max-width:380px;">
+        <h3 style="margin-top:0;">¿Estás segura?</h3>
+        <p style="font-size:13.5px;color:var(--ink);">${mensaje}</p>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
+          <button class="btn btn-secondary" id="ac-no">Cancelar</button>
+          <button class="btn btn-danger" id="ac-yes">Sí, eliminar</button>
+        </div>
+      </div>`;
+    document.body.appendChild(bg);
+    const cleanup = (val)=>{ bg.remove(); resolve(val); };
+    bg.querySelector('#ac-no').onclick = ()=> cleanup(false);
+    bg.querySelector('#ac-yes').onclick = ()=> cleanup(true);
+    bg.addEventListener('click', (e)=>{ if(e.target===bg) cleanup(false); });
+  });
+}
+
+/* ============ DESHACER (como en Word) ============
+   Estrategia: cualquier clic o cambio en un campo se vigila a nivel global (fase de
+   captura, antes de que el handler del botón/campo actúe). Se compara el estado antes
+   y después: si algo cambió, se guarda la versión "antes" en la pila de deshacer.
+   Para acciones que esperan una confirmación (eliminar) se toma la instantánea
+   manualmente justo antes de borrar, porque esas ocurren después de un await. */
+const UNDO_STACK = [];
+const MAX_UNDO = 40;
+let UNDO_PENDING_SNAPSHOT = null;
+let SUPPRESS_AUTO_UNDO = false;
+
+function pushUndoSnapshot(){
+  UNDO_STACK.push(JSON.stringify(STATE));
+  if(UNDO_STACK.length > MAX_UNDO) UNDO_STACK.shift();
+  updateUndoButton();
+}
+
+function captureForAutoUndo(){
+  UNDO_PENDING_SNAPSHOT = JSON.stringify(STATE);
+  queueMicrotask(()=>{
+    if(SUPPRESS_AUTO_UNDO){ SUPPRESS_AUTO_UNDO=false; UNDO_PENDING_SNAPSHOT=null; return; }
+    if(UNDO_PENDING_SNAPSHOT===null) return;
+    const after = JSON.stringify(STATE);
+    if(after !== UNDO_PENDING_SNAPSHOT){
+      UNDO_STACK.push(UNDO_PENDING_SNAPSHOT);
+      if(UNDO_STACK.length > MAX_UNDO) UNDO_STACK.shift();
+      updateUndoButton();
+    }
+    UNDO_PENDING_SNAPSHOT = null;
+  });
+}
+document.addEventListener('click', captureForAutoUndo, true);
+document.addEventListener('change', captureForAutoUndo, true);
+
+function undoLastAction(){
+  if(UNDO_STACK.length===0){ showToast('No hay nada que deshacer'); return; }
+  SUPPRESS_AUTO_UNDO = true;
+  const prev = UNDO_STACK.pop();
+  STATE = JSON.parse(prev);
+  persist(true);
+  render();
+  showToast('Cambio deshecho');
+}
+
+function updateUndoButton(){
+  const btn = document.getElementById('btn-undo');
+  if(btn) btn.disabled = UNDO_STACK.length===0;
+}
+
+document.addEventListener('keydown', (e)=>{
+  const z = e.key==='z' || e.key==='Z';
+  if(z && (e.ctrlKey || e.metaKey) && !e.shiftKey){
+    e.preventDefault();
+    undoLastAction();
+  }
+});
+
 
 /* ============ ROUTER / RENDER ============ */
 let ROUTE = 'dashboard';
@@ -470,6 +670,7 @@ const NAV = [
   {id:'inventario', label:'Inventario', ic:'📦'},
   {id:'ventas', label:'Pedidos', ic:'💌'},
   {id:'facturacion', label:'Facturación', ic:'📄'},
+  {id:'caja', label:'Caja', ic:'💰'},
   {id:'mermas', label:'Mermas', ic:'🗑️'},
   {id:'ajustes', label:'Equipos y M. de obra', ic:'⚙️'},
   {id:'negocio', label:'Configuración del negocio', ic:'🏪'},
@@ -498,6 +699,7 @@ function render(){
             <h1>${NAV.find(n=>n.id===ROUTE).label}</h1>
             <div class="sub">${topbarSub(ROUTE)}</div>
           </div>
+          <button class="btn btn-secondary btn-sm" id="btn-undo" title="Deshacer (Ctrl+Z)" ${UNDO_STACK.length===0?'disabled':''}>↩ Deshacer</button>
         </div>
         <div class="scallop"></div>
         <div class="content" id="content"></div>
@@ -505,6 +707,7 @@ function render(){
     </div>
     ${MODAL ? renderModal() : ''}
   `;
+  document.getElementById('btn-undo').onclick = undoLastAction;
   document.querySelectorAll('[data-nav]').forEach(b=> b.onclick = ()=>{ ROUTE=b.dataset.nav; render(); });
   const c = document.getElementById('content');
   ({
@@ -517,6 +720,7 @@ function render(){
     inventario: renderInventario,
     ventas: renderVentas,
     facturacion: renderFacturacion,
+    caja: renderCaja,
     mermas: renderMermas,
     ajustes: renderAjustes,
     negocio: renderNegocio,
@@ -537,6 +741,7 @@ function topbarSub(route){
     inventario:'Stock actual de producto terminado',
     ventas:'Pedidos, clientes, estado del pedido y anticipos',
     facturacion:'Comprobantes de venta conectados a clientes y pedidos, exportables a PDF',
+    caja:'Cuánto dinero tienes ahora — ingresos y egresos, con motivo',
     mermas:'Pérdidas de insumos o productos',
     ajustes:'Equipos (depreciación) y tarifas de mano de obra',
     negocio:'Datos de tu pastelería para las facturas — nombre, contacto, impuestos',
@@ -562,6 +767,7 @@ function renderHistorial(c){
 function renderDashboard(c){
   const hoy = todayISO();
   const mesActual = hoy.slice(0,7);
+  const cj = calcularCaja();
   const ventasMes = STATE.ventas.filter(v=> v.fechaPedido && v.fechaPedido.slice(0,7)===mesActual);
   const totalVentasMes = ventasMes.reduce((s,v)=> s + v.items.reduce((s2,it)=> s2 + it.cantidad*it.precioUnit,0) - (v.descuento||0), 0);
   const pendientesEntrega = STATE.ventas.filter(v=> v.estado!=='Entregado').length;
@@ -582,6 +788,13 @@ function renderDashboard(c){
       <div class="card stat"><div class="lbl">Pedidos sin entregar</div><div class="val">${pendientesEntrega}</div></div>
       <div class="card stat"><div class="lbl">Unidades en inventario</div><div class="val blue">${totalInventarioUnid}</div></div>
       <div class="card stat"><div class="lbl">Insumos con stock bajo</div><div class="val ${lowStock.length? 'yellow':''}">${lowStock.length}</div></div>
+    </div>
+
+    <div class="section-title">💰 Caja</div>
+    <div class="grid g3">
+      <div class="card stat"><div class="lbl">Ingresos totales</div><div class="val" style="color:var(--good);">${fmt(cj.ingresos)}</div></div>
+      <div class="card stat"><div class="lbl">Egresos totales</div><div class="val" style="color:var(--bad);">${fmt(cj.egresos)}</div></div>
+      <div class="card stat"><div class="lbl">Saldo actual</div><div class="val" style="color:${cj.saldo>=0?'var(--purple-dark)':'var(--bad)'};">${fmt(cj.saldo)}</div></div>
     </div>
 
     <div class="section-title">⚠️ Alertas de stock</div>
@@ -707,8 +920,14 @@ function renderInsumos(c){
   document.querySelectorAll('[data-in-stock]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inStock).stock=Number(e.target.value)||0; persist(); render(); });
   document.querySelectorAll('[data-in-prov]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inProv).proveedor=e.target.value; persist(); });
   document.querySelectorAll('[data-in-perec]').forEach(inp=> inp.onchange=(e)=>{ insumoById(inp.dataset.inPerec).perecedero=e.target.checked; persist(); });
-  document.querySelectorAll('[data-in-del]').forEach(b=> b.onclick=()=>{
-    if(confirm('¿Eliminar este insumo?')){ STATE.insumos = STATE.insumos.filter(i=>i.id!==b.dataset.inDel); persist(); render(); }
+  document.querySelectorAll('[data-in-del]').forEach(b=> b.onclick=async ()=>{
+    const id = b.dataset.inDel;
+    const usos = productosQueUsanInsumo(id);
+    if(usos.length>0){
+      showToast(`No se puede eliminar: se usa en ${usos.length} receta(s) — ${usos.slice(0,2).join(', ')}${usos.length>2?'...':''}. Quítalo de esas recetas primero.`);
+      return;
+    }
+    if(await askConfirm('¿Eliminar este insumo?')){ pushUndoSnapshot(); STATE.insumos = STATE.insumos.filter(i=>i.id!==id); persist(); render(); }
   });
 }
 
@@ -721,7 +940,7 @@ function renderCompras(c){
     </div>
     <div class="card small" style="margin-bottom:16px;">Cada compra actualiza el stock del insumo y recalcula su precio por unidad — y ese cambio se refleja automáticamente en el costeo de todas las recetas que lo usan.</div>
     <div class="tbl-wrap"><table><thead><tr>
-      <th>Fecha</th><th>Insumo</th><th>Cantidad</th><th>Precio total</th><th>Precio/unidad</th><th>Proveedor</th>
+      <th>Fecha</th><th>Insumo</th><th>Cantidad</th><th>Precio total</th><th>Precio/unidad</th><th>Proveedor</th><th></th>
     </tr></thead><tbody>
     ${compras.map(cp=>{
       const ins = insumoById(cp.insumoId);
@@ -732,11 +951,19 @@ function renderCompras(c){
         <td>${fmt(cp.precioTotal)}</td>
         <td>${fmt(cp.precioTotal/cp.cantidad)}</td>
         <td>${cp.proveedor||'—'}</td>
+        <td><button class="btn btn-danger btn-sm" data-del-compra="${cp.id}">✕</button></td>
       </tr>`;
-    }).join('') || `<tr><td colspan="6"><div class="empty"><div class="big">🧾</div>Aún no has registrado compras</div></td></tr>`}
+    }).join('') || `<tr><td colspan="7"><div class="empty"><div class="big">🧾</div>Aún no has registrado compras</div></td></tr>`}
     </tbody></table></div>
   `;
   document.getElementById('btn-add-compra').onclick = ()=>{ MODAL={type:'compra', data:null}; render(); };
+  document.querySelectorAll('[data-del-compra]').forEach(b=> b.onclick=async ()=>{
+    if(await askConfirm('¿Eliminar este registro de compra? No revierte el stock ni el precio ya actualizados.')){
+      pushUndoSnapshot();
+      STATE.compras = STATE.compras.filter(x=>x.id!==b.dataset.delCompra);
+      persist(); render();
+    }
+  });
 }
 
 /* ============ RECETAS Y COSTEO ============ */
@@ -759,6 +986,10 @@ function renderRecetas(c){
 function renderRecetasBody(el, producto){
   if(!producto){ el.innerHTML = `<div class="empty">Crea tu primer producto para empezar.</div>`; return; }
   el.innerHTML = `
+    <div class="card" style="margin-bottom:16px;max-width:420px;">
+      <label>Nombre general del producto</label>
+      <input type="text" id="producto-nombre" value="${producto.nombre}">
+    </div>
     <div class="grid g2">
       ${producto.variantes.map(v=>{
         const cost = costearVariante(v);
@@ -771,14 +1002,16 @@ function renderRecetasBody(el, producto){
               <button class="btn btn-ghost btn-sm" data-edit-variante="${v.id}">Editar</button>
             </div>
           </div>
-          <div class="small">Precio de venta actual: <strong>${fmt(v.precioVenta)}</strong> · Mano de obra: ${manoObraById(v.manoObraTipoId)?.nombre||'—'}</div>
+          <div class="small">Precio de venta (por ${(v.rendimientoUnidad||'unidad').replace(/s$/,'')}): <strong>${fmt(v.precioVenta)}</strong> · Mano de obra: ${manoObraById(v.manoObraTipoId)?.nombre||'—'}</div>
+          <div class="small">Rendimiento: 1 lote/receta = <strong>${cost.rendCant} ${v.rendimientoUnidad||'unidades'}</strong></div>
           <div class="costeo-box">
-            <div class="costeo-line"><span>Materia prima</span><span>${fmt(cost.mp)}</span></div>
-            <div class="costeo-line"><span>Desmolde</span><span>${fmt(cost.de)}</span></div>
-            <div class="costeo-line"><span>Empaque</span><span>${fmt(cost.em)}</span></div>
+            <div class="costeo-line"><span>Materia prima (por lote)</span><span>${fmt(cost.mp)}</span></div>
+            <div class="costeo-line"><span>Desmolde (por lote)</span><span>${fmt(cost.de)}</span></div>
+            <div class="costeo-line"><span>Empaque (por lote)</span><span>${fmt(cost.em)}</span></div>
             <div class="costeo-line"><span>Depreciación (por pedido)</span><span>${fmt(cost.dep)}</span></div>
-            <div class="costeo-line"><span>Mano de obra</span><span>${fmt(cost.mo)}</span></div>
-            <div class="costeo-line total"><span>Costeo neto</span><span>${fmt(cost.neto)}</span></div>
+            <div class="costeo-line"><span>Mano de obra (por pedido)</span><span>${fmt(cost.mo)}</span></div>
+            <div class="costeo-line total"><span>Costeo neto por lote</span><span>${fmt(cost.neto)}</span></div>
+            ${cost.rendCant>1? `<div class="costeo-line"><span>Costeo neto por ${(v.rendimientoUnidad||'unidad').replace(/s$/,'')}</span><span>${fmt(cost.netoUnidad)}</span></div>`:''}
             <div class="costeo-line"><span>Precio sugerido (+${Math.round(v.pctGanancia*100)}%)</span><span>${fmt(cost.sugerido)}</span></div>
             <div class="costeo-line margen ${margenClass}"><span>Margen real sobre precio actual</span><span>${fmt(cost.margenReal)} (${Math.round(cost.margenPct*100)}%)</span></div>
           </div>
@@ -787,17 +1020,27 @@ function renderRecetasBody(el, producto){
     </div>
     <div style="margin-top:14px;">
       <button class="btn btn-secondary btn-sm" id="btn-add-variante">+ Nueva variante de ${producto.nombre}</button>
-      <button class="btn btn-ghost btn-sm" id="btn-del-producto">Eliminar producto</button>
+      <button class="btn btn-danger btn-sm" id="btn-del-producto">Eliminar producto</button>
     </div>
   `;
+  document.getElementById('producto-nombre').onchange = (e)=>{
+    const nuevo = e.target.value.trim();
+    if(!nuevo){ showToast('El nombre no puede quedar vacío'); render(); return; }
+    const antes = producto.nombre;
+    producto.nombre = nuevo;
+    if(antes!==nuevo) logChange(`Se renombró el producto "${antes}" a "${nuevo}".`);
+    persist(); render();
+  };
   document.querySelectorAll('[data-edit-variante]').forEach(b=> b.onclick=()=>{
     const v = producto.variantes.find(x=>x.id===b.dataset.editVariante);
     MODAL={type:'variante', data:v, productoId:producto.id}; render();
   });
   document.getElementById('btn-add-variante').onclick = ()=>{ MODAL={type:'variante', data:null, productoId:producto.id}; render(); };
-  document.getElementById('btn-del-producto').onclick = ()=>{
-    if(confirm('¿Eliminar "'+producto.nombre+'" y todas sus variantes?')){
+  document.getElementById('btn-del-producto').onclick = async ()=>{
+    if(await askConfirm('¿Eliminar "'+producto.nombre+'" y todas sus variantes? Puedes deshacerlo después con Ctrl+Z si te equivocas.')){
+      pushUndoSnapshot();
       STATE.productos = STATE.productos.filter(p=>p.id!==producto.id);
+      logChange(`Producto eliminado: "${producto.nombre}".`);
       RECETAS_TAB = STATE.productos[0]?.id;
       persist(); render();
     }
@@ -805,23 +1048,79 @@ function renderRecetasBody(el, producto){
 }
 
 /* ============ PRODUCCIÓN ============ */
+// Aplica una producción: descuenta insumos (según snapshot ya calculado) y suma inventario (cantidad * rendimiento)
+function aplicarProduccion(pr){
+  pr.insumosConsumidos.forEach(r=>{
+    const ins = insumoById(r.insumoId);
+    if(ins) ins.stock -= r.cantidad;
+  });
+  STATE.inventarioProductoTerminado[pr.varianteId] = (STATE.inventarioProductoTerminado[pr.varianteId]||0) + pr.unidadesGeneradas;
+}
+// Revierte una producción: devuelve insumos y resta del inventario (usa el snapshot guardado, no la receta actual —
+// así, si luego cambias la receta, las producciones viejas se revierten con lo que realmente se usó en su momento)
+function revertirProduccion(pr){
+  const snapshot = pr.insumosConsumidos || [];
+  snapshot.forEach(r=>{
+    const ins = insumoById(r.insumoId);
+    if(ins) ins.stock += r.cantidad;
+  });
+  STATE.inventarioProductoTerminado[pr.varianteId] = Math.max(0, (STATE.inventarioProductoTerminado[pr.varianteId]||0) - pr.unidadesGeneradas);
+}
+// Calcula qué se consumiría y cuánto inventario se generaría para una variante+cantidad de lotes dados
+function calcularConsumoProduccion(variante, cantidadLotes){
+  const insumosConsumidos = [...variante.recetaMP, ...variante.recetaDesmolde, ...variante.recetaEmpaque]
+    .map(r=>({insumoId:r.insumoId, cantidad:r.cantidad*cantidadLotes}));
+  const unidadesGeneradas = cantidadLotes * (variante.rendimientoCantidad||1);
+  return {insumosConsumidos, unidadesGeneradas};
+}
+
 function renderProduccion(c){
   const producciones = [...STATE.producciones].sort((a,b)=> b.fecha.localeCompare(a.fecha));
   c.innerHTML = `
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
       <button class="btn btn-primary" id="btn-add-produccion">+ Registrar producción</button>
     </div>
-    <div class="card small" style="margin-bottom:16px;">Registrar una producción descuenta automáticamente los insumos usados y aumenta el inventario del producto terminado.</div>
+    <div class="card small" style="margin-bottom:16px;">Registrar producción descuenta los insumos usados y suma al inventario (según el rendimiento de la receta). Puedes editar o eliminar cualquier registro después — el stock se ajusta solo.</div>
     <div class="tbl-wrap"><table><thead><tr>
-      <th>Fecha</th><th>Producto</th><th>Cantidad</th><th>Tipo</th>
+      <th>Fecha</th><th>Producto</th><th>Lotes</th><th>Unidades generadas</th><th>Tipo</th><th></th>
     </tr></thead><tbody>
     ${producciones.map(pr=>{
       let nombre='—'; allVariantesFlat().forEach(({producto,variante})=>{ if(variante.id===pr.varianteId) nombre=producto.nombre+' — '+variante.nombre; });
-      return `<tr><td>${pr.fecha}</td><td>${nombre}</td><td>${pr.cantidad}</td><td>${pr.tipo}</td></tr>`;
-    }).join('') || `<tr><td colspan="4"><div class="empty"><div class="big">🍰</div>Aún no has registrado producción</div></td></tr>`}
+      return `<tr><td>${pr.fecha}</td><td>${nombre}</td><td>${pr.cantidad}</td><td>${pr.unidadesGeneradas ?? pr.cantidad}</td><td>${pr.tipo}</td>
+        <td>
+          <button class="btn btn-secondary btn-sm" data-edit-produccion="${pr.id}">Editar</button>
+          <button class="btn btn-danger btn-sm" data-del-produccion="${pr.id}">✕</button>
+        </td></tr>`;
+    }).join('') || `<tr><td colspan="6"><div class="empty"><div class="big">🍰</div>Aún no has registrado producción</div></td></tr>`}
     </tbody></table></div>
   `;
   document.getElementById('btn-add-produccion').onclick = ()=>{ MODAL={type:'produccion', data:null}; render(); };
+  document.querySelectorAll('[data-edit-produccion]').forEach(b=> b.onclick=()=>{
+    const pr = STATE.producciones.find(x=>x.id===b.dataset.editProduccion);
+    MODAL={type:'produccion', data:pr}; render();
+  });
+  document.querySelectorAll('[data-del-produccion]').forEach(b=> b.onclick=async ()=>{
+    if(await askConfirm('¿Eliminar esta producción? Se devolverán los insumos consumidos y se restará del inventario de producto terminado.')){
+      pushUndoSnapshot();
+      const pr = STATE.producciones.find(x=>x.id===b.dataset.delProduccion);
+      if(pr.insumosConsumidos && pr.insumosConsumidos.length>0){
+        revertirProduccion(pr);
+      } else {
+        // producción antigua sin snapshot guardado: revertir con la receta actual (mejor esfuerzo)
+        let variante=null; allVariantesFlat().forEach(({variante:v})=>{ if(v.id===pr.varianteId) variante=v; });
+        if(variante){
+          [...variante.recetaMP, ...variante.recetaDesmolde, ...variante.recetaEmpaque].forEach(r=>{
+            const ins = insumoById(r.insumoId);
+            if(ins) ins.stock += r.cantidad*pr.cantidad;
+          });
+          STATE.inventarioProductoTerminado[pr.varianteId] = Math.max(0, (STATE.inventarioProductoTerminado[pr.varianteId]||0) - pr.cantidad);
+        }
+      }
+      STATE.producciones = STATE.producciones.filter(x=>x.id!==pr.id);
+      logChange(`Producción eliminada y revertida (insumos devueltos al stock).`);
+      persist(); render();
+    }
+  });
 }
 
 /* ============ INVENTARIO ============ */
@@ -889,11 +1188,12 @@ function renderVentas(c){
       <button class="btn btn-primary" id="btn-add-venta">+ Nuevo pedido</button>
     </div>
     <div class="tbl-wrap"><table><thead><tr>
-      <th>Cliente</th><th>Pedido</th><th>Entrega</th><th>Canal</th><th>Total</th><th>Anticipo</th><th>Estado</th><th></th>
+      <th>Cliente</th><th>Pedido</th><th>Entrega</th><th>Canal</th><th>Total</th><th>Anticipo</th><th>Estado</th><th>Factura</th><th></th>
     </tr></thead><tbody>
     ${ventas.map(v=>{
       const total = v.items.reduce((s,it)=>s+it.cantidad*it.precioUnit,0) - (v.descuento||0);
       const cl = clienteById(v.clienteId);
+      const factura = v.facturaId ? STATE.facturas.find(f=>f.id===v.facturaId) : null;
       return `<tr>
         <td><strong>${cl?cl.nombre:'—'}</strong><div class="small">${cl?.telefono||''}</div></td>
         <td>${v.fechaPedido||'—'}</td>
@@ -902,9 +1202,10 @@ function renderVentas(c){
         <td>${fmt(total)}</td>
         <td>${fmt(v.anticipo||0)}</td>
         <td><span class="pill ${estadoPill(v.estado)}">${v.estado}</span></td>
+        <td>${factura? `<span class="pill ok">#${factura.numero}</span>` : `<span class="small">sin facturar</span>`}</td>
         <td><button class="btn btn-secondary btn-sm" data-edit-venta="${v.id}">Ver</button></td>
       </tr>`;
-    }).join('') || `<tr><td colspan="8"><div class="empty"><div class="big">💌</div>Aún no has registrado pedidos</div></td></tr>`}
+    }).join('') || `<tr><td colspan="9"><div class="empty"><div class="big">💌</div>Aún no has registrado pedidos</div></td></tr>`}
     </tbody></table></div>
   `;
   document.getElementById('btn-add-venta').onclick = ()=>{ VENTA_DRAFT_ITEMS=[]; MODAL={type:'venta', data:null}; render(); };
@@ -916,22 +1217,100 @@ function renderVentas(c){
 }
 
 /* ============ MERMAS ============ */
+/* ============ CAJA ============ */
+function totalVenta(v){ return v.items.reduce((s,it)=> s + it.cantidad*it.precioUnit, 0) - (v.descuento||0); }
+
+function calcularCaja(){
+  const ingresosVentas = STATE.ventas.reduce((s,v)=> s + totalVenta(v), 0);
+  const egresosCompras = STATE.compras.reduce((s,cp)=> s + cp.precioTotal, 0);
+  const ingresosManuales = STATE.movimientosCaja.filter(m=>m.tipo==='ingreso').reduce((s,m)=> s+m.monto, 0);
+  const egresosManuales = STATE.movimientosCaja.filter(m=>m.tipo==='egreso').reduce((s,m)=> s+m.monto, 0);
+  const ingresos = ingresosVentas + ingresosManuales;
+  const egresos = egresosCompras + egresosManuales;
+  return {ingresos, egresos, saldo: ingresos-egresos, ingresosVentas, egresosCompras, ingresosManuales, egresosManuales};
+}
+
+function libroDeCaja(){
+  const filas = [];
+  STATE.ventas.forEach(v=>{
+    const cl = clienteById(v.clienteId);
+    filas.push({fecha:v.fechaPedido||'', tipo:'ingreso', concepto:`Venta a ${cl?cl.nombre:'cliente'}`, monto: totalVenta(v), origen:'venta'});
+  });
+  STATE.compras.forEach(cp=>{
+    const ins = insumoById(cp.insumoId);
+    filas.push({fecha:cp.fecha, tipo:'egreso', concepto:`Compra de ${ins?ins.nombre:'insumo'}`, monto: cp.precioTotal, origen:'compra'});
+  });
+  STATE.movimientosCaja.forEach(m=>{
+    filas.push({fecha:m.fecha, tipo:m.tipo, concepto:m.motivo, monto:m.monto, origen:'manual', id:m.id});
+  });
+  return filas.sort((a,b)=> (b.fecha||'').localeCompare(a.fecha||''));
+}
+
+function renderCaja(c){
+  const cj = calcularCaja();
+  const filas = libroDeCaja();
+  c.innerHTML = `
+    <div class="grid g3" style="margin-bottom:20px;">
+      <div class="card stat"><div class="lbl">Ingresos totales</div><div class="val" style="color:var(--good);">${fmt(cj.ingresos)}</div></div>
+      <div class="card stat"><div class="lbl">Egresos totales</div><div class="val" style="color:var(--bad);">${fmt(cj.egresos)}</div></div>
+      <div class="card stat"><div class="lbl">Saldo actual</div><div class="val ${cj.saldo<0?'':''}" style="color:${cj.saldo>=0?'var(--purple-dark)':'var(--bad)'};">${fmt(cj.saldo)}</div></div>
+    </div>
+    <div class="card small" style="margin-bottom:16px;">Los ingresos por ventas y los egresos por compras de insumos se toman automáticamente de esas secciones. Aquí solo agregas movimientos adicionales — transporte, publicidad, servicios, retiros, u otro ingreso que no sea una venta.</div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+      <button class="btn btn-primary" id="btn-add-mov">+ Nuevo movimiento</button>
+    </div>
+    <div class="tbl-wrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Concepto</th><th class="right">Monto</th><th></th></tr></thead><tbody>
+    ${filas.map(f=>`<tr>
+      <td>${f.fecha||'—'}</td>
+      <td><span class="pill ${f.tipo==='ingreso'?'ok':'bad'}">${f.tipo}</span></td>
+      <td>${f.concepto}${f.origen!=='manual'? ` <span class="small">(${f.origen})</span>`:''}</td>
+      <td class="right" style="color:${f.tipo==='ingreso'?'var(--good)':'var(--bad)'};">${f.tipo==='ingreso'?'+':'-'}${fmt(f.monto)}</td>
+      <td>${f.origen==='manual'? `<button class="btn btn-danger btn-sm" data-del-mov="${f.id}">✕</button>`:''}</td>
+    </tr>`).join('') || `<tr><td colspan="5"><div class="empty"><div class="big">💰</div>Sin movimientos todavía</div></td></tr>`}
+    </tbody></table></div>
+  `;
+  document.getElementById('btn-add-mov').onclick = ()=>{ MODAL={type:'movimientoCaja', data:null}; render(); };
+  document.querySelectorAll('[data-del-mov]').forEach(b=> b.onclick=async ()=>{
+    if(await askConfirm('¿Eliminar este movimiento de caja?')){
+      pushUndoSnapshot();
+      STATE.movimientosCaja = STATE.movimientosCaja.filter(m=>m.id!==b.dataset.delMov);
+      persist(); render();
+    }
+  });
+}
+
+/* ============ MERMAS ============ */
 function renderMermas(c){
   const mermas = [...STATE.mermas].sort((a,b)=> b.fecha.localeCompare(a.fecha));
   c.innerHTML = `
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
       <button class="btn btn-primary" id="btn-add-merma">+ Registrar merma</button>
     </div>
-    <div class="tbl-wrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Ítem</th><th>Cantidad</th><th>Motivo</th></tr></thead><tbody>
+    <div class="tbl-wrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Ítem</th><th>Cantidad</th><th>Motivo</th><th></th></tr></thead><tbody>
     ${mermas.map(m=>{
       let nombre='—';
       if(m.tipo==='insumo'){ const ins=insumoById(m.refId); nombre = ins?ins.nombre:'—'; }
       else{ allVariantesFlat().forEach(({producto,variante})=>{ if(variante.id===m.refId) nombre=producto.nombre+' — '+variante.nombre; }); }
-      return `<tr><td>${m.fecha}</td><td><span class="pill ${m.tipo==='insumo'?'mp':'em'}">${m.tipo}</span></td><td>${nombre}</td><td>${m.cantidad}</td><td>${m.motivo}</td></tr>`;
-    }).join('') || `<tr><td colspan="5"><div class="empty"><div class="big">🗑️</div>Sin mermas registradas — ¡bien!</div></td></tr>`}
+      return `<tr><td>${m.fecha}</td><td><span class="pill ${m.tipo==='insumo'?'mp':'em'}">${m.tipo}</span></td><td>${nombre}</td><td>${m.cantidad}</td><td>${m.motivo}</td><td><button class="btn btn-danger btn-sm" data-del-merma="${m.id}">✕</button></td></tr>`;
+    }).join('') || `<tr><td colspan="6"><div class="empty"><div class="big">🗑️</div>Sin mermas registradas — ¡bien!</div></td></tr>`}
     </tbody></table></div>
   `;
   document.getElementById('btn-add-merma').onclick = ()=>{ MODAL={type:'merma', data:null}; render(); };
+  document.querySelectorAll('[data-del-merma]').forEach(b=> b.onclick=async ()=>{
+    if(await askConfirm('¿Eliminar este registro de merma? Se devolverá la cantidad al stock/inventario correspondiente.')){
+      pushUndoSnapshot();
+      const m = STATE.mermas.find(x=>x.id===b.dataset.delMerma);
+      if(m.tipo==='insumo'){
+        const ins = insumoById(m.refId);
+        if(ins) ins.stock += m.cantidad;
+      } else {
+        STATE.inventarioProductoTerminado[m.refId] = (STATE.inventarioProductoTerminado[m.refId]||0) + m.cantidad;
+      }
+      STATE.mermas = STATE.mermas.filter(x=>x.id!==m.id);
+      logChange('Merma eliminada y revertida.');
+      persist(); render();
+    }
+  });
 }
 
 /* ============ AJUSTES (equipos + mano de obra) ============ */
@@ -951,7 +1330,7 @@ function renderAjustes(c){
     ${STATE.equipos.map(e=>{
       const dm = e.vidaUtilMeses? (e.precioCompra/e.vidaUtilMeses)*e.pctUso : 0;
       return `<tr>
-        <td>${e.nombre}</td>
+        <td><input type="text" data-eq-nombre="${e.id}" value="${e.nombre}" style="min-width:150px;"></td>
         <td><input type="number" data-eq-precio="${e.id}" value="${e.precioCompra}" style="width:110px;"></td>
         <td><input type="number" data-eq-vida="${e.id}" value="${e.vidaUtilMeses}" style="width:80px;"></td>
         <td><input type="number" step="0.1" data-eq-pct="${e.id}" value="${e.pctUso}" style="width:70px;"></td>
@@ -967,14 +1346,22 @@ function renderAjustes(c){
     </div>
 
     <div class="section-title" style="margin-top:30px;">👩‍🍳 Tarifas de mano de obra</div>
-    <div class="tbl-wrap"><table><thead><tr><th>Tipo</th><th>Tarifa por unidad/pedido</th></tr></thead><tbody>
+    <div class="tbl-wrap"><table><thead><tr><th>Tipo</th><th>Tarifa por unidad/pedido</th><th></th></tr></thead><tbody>
     ${STATE.manoObraTipos.map(m=>`<tr>
-      <td>${m.nombre}</td>
+      <td><input type="text" data-mo-nombre="${m.id}" value="${m.nombre}" style="min-width:180px;"></td>
       <td><input type="number" data-mo-tarifa="${m.id}" value="${m.tarifa}" style="width:120px;"></td>
+      <td><button class="btn btn-danger btn-sm" data-del-mo="${m.id}">Eliminar</button></td>
     </tr>`).join('')}
     </tbody></table></div>
+    <div style="margin:12px 0;"><button class="btn btn-secondary btn-sm" id="btn-add-mo">+ Nuevo tipo de mano de obra</button></div>
   `;
   document.getElementById('pedidos-mes').onchange = (e)=>{ STATE.config.pedidosPromedioMes = Number(e.target.value)||1; persist(); render(); };
+  document.querySelectorAll('[data-eq-nombre]').forEach(inp=> inp.onchange=(e)=>{
+    const eq = equipoById(inp.dataset.eqNombre); const antes=eq.nombre;
+    eq.nombre = e.target.value.trim() || antes;
+    if(antes!==eq.nombre) logChange(`Se renombró el equipo "${antes}" a "${eq.nombre}".`);
+    persist(); render();
+  });
   document.querySelectorAll('[data-eq-precio]').forEach(inp=> inp.onchange=(e)=>{
     const eq = equipoById(inp.dataset.eqPrecio); const antes=eq.precioCompra;
     eq.precioCompra = Number(e.target.value)||0;
@@ -983,15 +1370,33 @@ function renderAjustes(c){
   });
   document.querySelectorAll('[data-eq-vida]').forEach(inp=> inp.onchange=(e)=>{ equipoById(inp.dataset.eqVida).vidaUtilMeses = Number(e.target.value)||1; persist(); render(); });
   document.querySelectorAll('[data-eq-pct]').forEach(inp=> inp.onchange=(e)=>{ equipoById(inp.dataset.eqPct).pctUso = Number(e.target.value)||0; persist(); render(); });
+  document.querySelectorAll('[data-mo-nombre]').forEach(inp=> inp.onchange=(e)=>{
+    const mo = manoObraById(inp.dataset.moNombre); const antes=mo.nombre;
+    mo.nombre = e.target.value.trim() || antes;
+    if(antes!==mo.nombre) logChange(`Se renombró el tipo de mano de obra "${antes}" a "${mo.nombre}".`);
+    persist(); render();
+  });
   document.querySelectorAll('[data-mo-tarifa]').forEach(inp=> inp.onchange=(e)=>{
     const mo = manoObraById(inp.dataset.moTarifa); const antes=mo.tarifa;
     mo.tarifa = Number(e.target.value)||0;
     if(antes!==mo.tarifa) logChange(`Se modificó la tarifa de mano de obra "${mo.nombre}" de ${fmt(antes)} a ${fmt(mo.tarifa)}.`);
     persist(); render();
   });
-  document.querySelectorAll('[data-del-eq]').forEach(b=> b.onclick=()=>{ STATE.equipos = STATE.equipos.filter(x=>x.id!==b.dataset.delEq); persist(); render(); });
+  document.querySelectorAll('[data-del-eq]').forEach(b=> b.onclick=async ()=>{
+    if(await askConfirm('¿Eliminar este equipo?')){ pushUndoSnapshot(); STATE.equipos = STATE.equipos.filter(x=>x.id!==b.dataset.delEq); persist(); render(); }
+  });
+  document.querySelectorAll('[data-del-mo]').forEach(b=> b.onclick=async ()=>{
+    const id = b.dataset.delMo;
+    const enUso = allVariantesFlat().some(({variante})=> variante.manoObraTipoId===id);
+    if(enUso){ showToast('No se puede eliminar: hay productos usando esta tarifa. Cámbiala en Recetas primero.'); return; }
+    if(await askConfirm('¿Eliminar este tipo de mano de obra?')){ pushUndoSnapshot(); STATE.manoObraTipos = STATE.manoObraTipos.filter(x=>x.id!==id); persist(); render(); }
+  });
   document.getElementById('btn-add-eq').onclick = ()=>{
     STATE.equipos.push({id:uid('e'),nombre:'Nuevo equipo',precioCompra:0,vidaUtilMeses:12,pctUso:1,obs:''});
+    persist(); render();
+  };
+  document.getElementById('btn-add-mo').onclick = ()=>{
+    STATE.manoObraTipos.push({id:uid('mo'), nombre:'Nuevo tipo', tarifa:0});
     persist(); render();
   };
 }
@@ -1000,12 +1405,12 @@ function renderAjustes(c){
 function renderReportes(c){
   const rentabilidad = allVariantesFlat().map(({producto,variante})=>{
     const cost = costearVariante(variante);
-    return {nombre:producto.nombre+' — '+variante.nombre, costo:cost.neto, precio:variante.precioVenta, margen:cost.margenReal, margenPct:cost.margenPct};
+    return {nombre:producto.nombre+' — '+variante.nombre, costo:cost.netoUnidad, precio:variante.precioVenta, margen:cost.margenReal, margenPct:cost.margenPct};
   }).sort((a,b)=> b.margenPct - a.margenPct);
 
   const totalMermasValor = STATE.mermas.reduce((s,m)=>{
     if(m.tipo==='insumo'){ const ins=insumoById(m.refId); return s + (ins? m.cantidad*precioUnitario(ins) : 0); }
-    else{ let v=0; allVariantesFlat().forEach(({variante})=>{ if(variante.id===m.refId) v = costearVariante(variante).neto; }); return s + m.cantidad*v; }
+    else{ let v=0; allVariantesFlat().forEach(({variante})=>{ if(variante.id===m.refId) v = costearVariante(variante).netoUnidad; }); return s + m.cantidad*v; }
   },0);
 
   const insumosCostosos = [...STATE.insumos].sort((a,b)=> precioUnitario(b)-precioUnitario(a)).slice(0,5);
@@ -1048,6 +1453,7 @@ function renderModal(){
   if(m.type==='merma') body = modalMerma(m.data);
   if(m.type==='cliente') body = modalCliente(m.data);
   if(m.type==='factura') body = modalFactura(m.data);
+  if(m.type==='movimientoCaja') body = modalMovimientoCaja(m.data);
   return `<div class="modal-bg" id="modal-bg"><div class="modal">${body}</div></div>`;
 }
 function closeModal(){ MODAL=null; render(); }
@@ -1126,10 +1532,20 @@ function modalVariante(data){
     <h3>${editing?'Editar variante':'Nueva variante'}</h3>
     <div class="formgrid">
       <div><label>Nombre de la variante</label><input type="text" id="f-nombre" value="${data?.nombre||''}"></div>
-      <div><label>Precio de venta</label><input type="number" id="f-precio" value="${data?.precioVenta??''}"></div>
+      <div><label>Precio de venta (por unidad vendible)</label><input type="number" id="f-precio" value="${data?.precioVenta??''}"></div>
       <div><label>% ganancia objetivo</label><input type="number" id="f-pct" value="${data? Math.round(data.pctGanancia*100):40}"></div>
       <div><label>Tipo de mano de obra</label><select id="f-mo">
         ${STATE.manoObraTipos.map(m=>`<option value="${m.id}" ${data?.manoObraTipoId===m.id?'selected':''}>${m.nombre} (${fmt(m.tarifa)})</option>`).join('')}
+      </select></div>
+    </div>
+
+    <div class="card small" style="margin-bottom:12px;background:var(--lilac-soft);">
+      <strong>Rendimiento:</strong> ¿cuánto produce esta receta con las cantidades de abajo? Por ejemplo, una tanda de galletas puede rendir 24 unidades — así, al registrar 1 producción de esta receta, se suman 24 al inventario en vez de 1.
+    </div>
+    <div class="formgrid">
+      <div><label>Esta receta rinde</label><input type="number" id="f-rend-cant" min="1" step="0.01" value="${data?.rendimientoCantidad??1}"></div>
+      <div><label>Unidad de medida</label><select id="f-rend-unidad">
+        ${['unidades','porciones','gramos','kilogramos','onzas','libras'].map(u=>`<option ${data?.rendimientoUnidad===u?'selected':''}>${u}</option>`).join('')}
       </select></div>
     </div>
 
@@ -1156,21 +1572,27 @@ function modalVariante(data){
 }
 
 function modalProduccion(data){
+  const editing = !!data;
   const opts = allVariantesFlat();
   return `
-    <h3>Registrar producción</h3>
+    <h3>${editing?'Editar producción':'Registrar producción'}</h3>
     <div class="formgrid">
       <div><label>Producto</label><select id="f-variante">
-        ${opts.map(({producto,variante})=>`<option value="${variante.id}">${producto.nombre} — ${variante.nombre}</option>`).join('')}
+        ${opts.map(({producto,variante})=>`<option value="${variante.id}" ${data?.varianteId===variante.id?'selected':''}>${producto.nombre} — ${variante.nombre}</option>`).join('')}
       </select></div>
-      <div><label>Cantidad producida</label><input type="number" id="f-cant" value="1" min="1"></div>
-      <div><label>Tipo</label><select id="f-tipo"><option>Por unidad</option><option>Por lote</option></select></div>
-      <div><label>Fecha</label><input type="date" id="f-fecha" value="${todayISO()}"></div>
+      <div><label>Cantidad de lotes/recetas</label><input type="number" id="f-cant" value="${data?.cantidad??1}" min="1"></div>
+      <div><label>Tipo</label><select id="f-tipo">
+        ${['Por unidad','Por lote'].map(t=>`<option ${data?.tipo===t?'selected':''}>${t}</option>`).join('')}
+      </select></div>
+      <div><label>Fecha</label><input type="date" id="f-fecha" value="${data?.fecha||todayISO()}"></div>
     </div>
-    <div class="small">Se descontarán automáticamente los insumos de la receta (multiplicados por la cantidad) y se sumará al inventario de producto terminado.</div>
-    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px;">
-      <button class="btn btn-secondary" id="m-cancel">Cancelar</button>
-      <button class="btn btn-primary" id="m-save">Registrar</button>
+    <div class="costeo-box" id="produccion-preview"></div>
+    <div style="display:flex;justify-content:space-between;margin-top:14px;">
+      ${editing? `<button class="btn btn-danger" id="m-del">Eliminar</button>` : '<span></span>'}
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" id="m-cancel">Cancelar</button>
+        <button class="btn btn-primary" id="m-save">${editing?'Guardar cambios':'Registrar'}</button>
+      </div>
     </div>
   `;
 }
@@ -1241,6 +1663,25 @@ function modalMerma(data){
   `;
 }
 
+function modalMovimientoCaja(data){
+  return `
+    <h3>Nuevo movimiento de caja</h3>
+    <div class="formgrid">
+      <div><label>Tipo</label><select id="f-tipo">
+        <option value="egreso">Egreso (sale dinero)</option>
+        <option value="ingreso">Ingreso (entra dinero)</option>
+      </select></div>
+      <div><label>Monto</label><input type="number" id="f-monto" min="0"></div>
+      <div><label>Fecha</label><input type="date" id="f-fecha" value="${todayISO()}"></div>
+    </div>
+    <div><label>Motivo</label><input type="text" id="f-motivo" placeholder="Ej: transporte, publicidad, servicios, retiro personal..."></div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px;">
+      <button class="btn btn-secondary" id="m-cancel">Cancelar</button>
+      <button class="btn btn-primary" id="m-save">Registrar</button>
+    </div>
+  `;
+}
+
 function modalCliente(data){
   const editing = !!data;
   return `
@@ -1267,12 +1708,24 @@ function modalFactura(data){
   const editing = !!data;
   const opts = allVariantesFlat();
   const clienteOpts = STATE.clientes.map(cl=>`<option value="${cl.id}" ${data?.clienteId===cl.id?'selected':''}>${cl.nombre}</option>`).join('');
+  const pedidosDisponibles = STATE.ventas.filter(v=> !v.facturaId);
   const itemsHTML = ()=> FACTURA_DRAFT_ITEMS.map((it,idx)=>{
     return `<div class="chip">${it.nombre} × ${it.cantidad} (${fmt(it.precioUnit)} c/u${it.descuento?` − ${fmt(it.descuento)} desc.`:''})<button data-rm-fitem="${idx}">✕</button></div>`;
   }).join('') || `<div class="small">Sin productos agregados aún.</div>`;
 
   return `
     <h3>${editing?'Factura #'+data.numero:'Nueva factura'}</h3>
+    ${!editing? `
+    <div class="card small" style="margin-bottom:14px;background:var(--lilac-soft);">
+      <label>¿Generar desde un pedido ya registrado? (recomendado — evita descontar el inventario dos veces)</label>
+      <select id="f-desde-pedido">
+        <option value="">— Factura manual (sin vincular a un pedido) —</option>
+        ${pedidosDisponibles.map(v=>{
+          const cl = clienteById(v.clienteId);
+          return `<option value="${v.id}">${v.fechaPedido||'s/f'} — ${cl?cl.nombre:'cliente'} — ${fmt(totalVenta(v))}</option>`;
+        }).join('')}
+      </select>
+    </div>` : (data.pedidoId? `<div class="card small" style="margin-bottom:14px;">Esta factura está vinculada al pedido del ${STATE.ventas.find(v=>v.id===data.pedidoId)?.fechaPedido||''}. El inventario ya fue descontado por ese pedido — esta factura no lo vuelve a tocar.</div>` : '')}
     <div class="formgrid">
       <div><label>Cliente</label><select id="f-cliente"><option value="">— Seleccionar —</option>${clienteOpts}</select></div>
       <div><label>o crear cliente nuevo</label><input type="text" id="f-cliente-nuevo" placeholder="Nombre del cliente nuevo"></div>
@@ -1286,7 +1739,7 @@ function modalFactura(data){
 
     <h4 class="mt0">Productos</h4>
     <div id="factura-items">${itemsHTML()}</div>
-    <div class="recipe-row" style="grid-template-columns:2fr 1fr 1fr 1fr auto;">
+    <div class="recipe-row" id="factura-add-row" style="grid-template-columns:2fr 1fr 1fr 1fr auto;">
       <select id="fi-variante">${opts.map(({producto,variante})=>`<option value="${variante.id}" data-precio="${variante.precioVenta}" data-nombre="${producto.nombre} — ${variante.nombre}">${producto.nombre} — ${variante.nombre}</option>`).join('')}</select>
       <input type="number" id="fi-cant" value="1" min="1" placeholder="Cant.">
       <input type="number" id="fi-precio" placeholder="Precio unit.">
@@ -1325,13 +1778,19 @@ function wireModal(){
   if(MODAL.type==='merma') wireMerma();
   if(MODAL.type==='cliente') wireCliente();
   if(MODAL.type==='factura') wireFactura();
+  if(MODAL.type==='movimientoCaja') wireMovimientoCaja();
 }
 
 function wireInsumo(){
   const data = MODAL.data;
   const del = document.getElementById('m-del');
-  if(del) del.onclick = ()=>{
-    if(confirm('¿Eliminar este insumo?')){ STATE.insumos = STATE.insumos.filter(i=>i.id!==data.id); persist(); closeModal(); showToast('Insumo eliminado'); }
+  if(del) del.onclick = async ()=>{
+    const usos = productosQueUsanInsumo(data.id);
+    if(usos.length>0){
+      showToast(`No se puede eliminar: se usa en ${usos.length} receta(s) — ${usos.slice(0,2).join(', ')}${usos.length>2?'...':''}.`);
+      return;
+    }
+    if(await askConfirm('¿Eliminar este insumo?')){ pushUndoSnapshot(); STATE.insumos = STATE.insumos.filter(i=>i.id!==data.id); persist(); closeModal(); showToast('Insumo eliminado'); }
   };
   document.getElementById('m-save').onclick = ()=>{
     const val = {
@@ -1414,8 +1873,9 @@ function wireVariante(){
   }
 
   const del = document.getElementById('m-del');
-  if(del) del.onclick = ()=>{
-    if(confirm('¿Eliminar esta variante?')){
+  if(del) del.onclick = async ()=>{
+    if(await askConfirm('¿Eliminar esta variante?')){
+      pushUndoSnapshot();
       producto.variantes = producto.variantes.filter(v=>v.id!==data.id);
       persist(); closeModal(); showToast('Variante eliminada');
     }
@@ -1427,6 +1887,8 @@ function wireVariante(){
       precioVenta: Number(document.getElementById('f-precio').value)||0,
       pctGanancia: (Number(document.getElementById('f-pct').value)||0)/100,
       manoObraTipoId: document.getElementById('f-mo').value,
+      rendimientoCantidad: Number(document.getElementById('f-rend-cant').value)||1,
+      rendimientoUnidad: document.getElementById('f-rend-unidad').value,
       recetaMP: collectRows('rows-mp'),
       recetaDesmolde: collectRows('rows-de'),
       recetaEmpaque: collectRows('rows-em'),
@@ -1439,29 +1901,75 @@ function wireVariante(){
 }
 
 function wireProduccion(){
+  const data = MODAL.data;
+  const editing = !!data;
+  const selVariante = document.getElementById('f-variante');
+  const inpCant = document.getElementById('f-cant');
+
+  function variantePorId(id){ let v=null; allVariantesFlat().forEach(({variante})=>{ if(variante.id===id) v=variante; }); return v; }
+
+  function refreshPreview(){
+    const variante = variantePorId(selVariante.value);
+    const cantidad = Number(inpCant.value)||0;
+    const box = document.getElementById('produccion-preview');
+    if(!variante || cantidad<=0){ box.innerHTML = `<span class="small">Indica producto y cantidad.</span>`; return; }
+    const {unidadesGeneradas} = calcularConsumoProduccion(variante, cantidad);
+    const rend = variante.rendimientoCantidad||1;
+    box.innerHTML = `
+      <div class="costeo-line"><span>Rendimiento de la receta</span><span>1 lote = ${rend} ${variante.rendimientoUnidad||'unidades'}</span></div>
+      <div class="costeo-line total"><span>Esta producción generará</span><span>${unidadesGeneradas} ${variante.rendimientoUnidad||'unidades'}</span></div>
+    `;
+  }
+  selVariante.onchange = refreshPreview;
+  inpCant.oninput = refreshPreview;
+  refreshPreview();
+
+  const del = document.getElementById('m-del');
+  if(del) del.onclick = async ()=>{
+    if(await askConfirm('¿Eliminar esta producción? Se devolverán los insumos y se restará del inventario.')){
+      pushUndoSnapshot();
+      if(data.insumosConsumidos && data.insumosConsumidos.length>0) revertirProduccion(data);
+      STATE.producciones = STATE.producciones.filter(x=>x.id!==data.id);
+      logChange('Producción eliminada y revertida (insumos devueltos al stock).');
+      persist(); closeModal(); showToast('Producción eliminada');
+    }
+  };
+
   document.getElementById('m-save').onclick = ()=>{
-    const varianteId = document.getElementById('f-variante').value;
-    const cantidad = Number(document.getElementById('f-cant').value)||0;
+    const varianteId = selVariante.value;
+    const cantidad = Number(inpCant.value)||0;
     const tipo = document.getElementById('f-tipo').value;
     const fecha = document.getElementById('f-fecha').value || todayISO();
     if(cantidad<=0){ showToast('Indica una cantidad válida'); return; }
-    let variante=null; allVariantesFlat().forEach(({variante:v})=>{ if(v.id===varianteId) variante=v; });
+    const variante = variantePorId(varianteId);
     if(!variante) return;
-    const allInsumos = [...variante.recetaMP, ...variante.recetaDesmolde];
-    allInsumos.forEach(r=>{
-      const ins = insumoById(r.insumoId);
-      if(ins) ins.stock = Math.max(0, ins.stock - r.cantidad*cantidad);
-    });
-    variante.recetaEmpaque.forEach(r=>{
-      const ins = insumoById(r.insumoId);
-      if(ins) ins.stock = Math.max(0, ins.stock - r.cantidad*cantidad);
-    });
-    STATE.inventarioProductoTerminado[varianteId] = (STATE.inventarioProductoTerminado[varianteId]||0) + cantidad;
-    STATE.producciones.push({id:uid('pr'), varianteId, cantidad, tipo, fecha});
-    let nombreProd='—'; allVariantesFlat().forEach(({producto,variante:v})=>{ if(v.id===varianteId) nombreProd=producto.nombre+' — '+v.nombre; });
-    logChange(`Producción registrada: ${cantidad} unid. de "${nombreProd}".`);
+
+    if(editing){
+      // revertir el efecto anterior (con el snapshot viejo), luego aplicar el nuevo
+      if(data.insumosConsumidos && data.insumosConsumidos.length>0) revertirProduccion(data);
+      else {
+        // producción antigua sin snapshot: mejor esfuerzo con la receta actual
+        [...variante.recetaMP, ...variante.recetaDesmolde, ...variante.recetaEmpaque].forEach(r=>{
+          const ins = insumoById(r.insumoId); if(ins) ins.stock += r.cantidad*data.cantidad;
+        });
+        STATE.inventarioProductoTerminado[data.varianteId] = Math.max(0, (STATE.inventarioProductoTerminado[data.varianteId]||0) - data.cantidad);
+      }
+      const {insumosConsumidos, unidadesGeneradas} = calcularConsumoProduccion(variante, cantidad);
+      Object.assign(data, {varianteId, cantidad, tipo, fecha, insumosConsumidos, unidadesGeneradas});
+      aplicarProduccion(data);
+      let nombreProd='—'; allVariantesFlat().forEach(({producto,variante:v})=>{ if(v.id===varianteId) nombreProd=producto.nombre+' — '+v.nombre; });
+      logChange(`Producción editada: ahora ${cantidad} lote(s) de "${nombreProd}" (${unidadesGeneradas} ${variante.rendimientoUnidad||'unidades'}).`);
+      showToast('Producción actualizada — stock ajustado');
+    } else {
+      const {insumosConsumidos, unidadesGeneradas} = calcularConsumoProduccion(variante, cantidad);
+      const pr = {id:uid('pr'), varianteId, cantidad, tipo, fecha, insumosConsumidos, unidadesGeneradas};
+      aplicarProduccion(pr);
+      STATE.producciones.push(pr);
+      let nombreProd='—'; allVariantesFlat().forEach(({producto,variante:v})=>{ if(v.id===varianteId) nombreProd=producto.nombre+' — '+v.nombre; });
+      logChange(`Producción registrada: ${cantidad} lote(s) de "${nombreProd}" (${unidadesGeneradas} ${variante.rendimientoUnidad||'unidades'}).`);
+      showToast('Producción registrada — inventario actualizado');
+    }
     persist(); closeModal();
-    showToast('Producción registrada — inventario actualizado');
   };
 }
 
@@ -1492,10 +2000,11 @@ function wireVenta(){
   };
 
   const del = document.getElementById('m-del');
-  if(del) del.onclick = ()=>{
-    if(confirm('¿Eliminar esta venta? (no se reversa el inventario automáticamente)')){
+  if(del) del.onclick = async ()=>{
+    if(await askConfirm('¿Eliminar este pedido? (no se reversa el inventario automáticamente)')){
+      pushUndoSnapshot();
       STATE.ventas = STATE.ventas.filter(v=>v.id!==data.id);
-      persist(); closeModal(); showToast('Venta eliminada');
+      persist(); closeModal(); showToast('Pedido eliminado');
     }
   };
 
@@ -1576,11 +2085,27 @@ function wireMerma(){
   };
 }
 
+function wireMovimientoCaja(){
+  document.getElementById('m-save').onclick = ()=>{
+    const tipo = document.getElementById('f-tipo').value;
+    const monto = Number(document.getElementById('f-monto').value)||0;
+    const fecha = document.getElementById('f-fecha').value || todayISO();
+    const motivo = document.getElementById('f-motivo').value.trim();
+    if(monto<=0){ showToast('Indica un monto válido'); return; }
+    if(!motivo){ showToast('Escribe el motivo del movimiento'); return; }
+    STATE.movimientosCaja.push({id:uid('mov'), tipo, monto, fecha, motivo});
+    logChange(`Movimiento de caja registrado: ${tipo} de ${fmt(monto)} — ${motivo}.`);
+    persist(); closeModal();
+    showToast('Movimiento registrado');
+  };
+}
+
 function wireCliente(){
   const data = MODAL.data;
   const del = document.getElementById('m-del');
-  if(del) del.onclick = ()=>{
-    if(confirm('¿Eliminar este cliente? (sus pedidos y facturas anteriores se conservan)')){
+  if(del) del.onclick = async ()=>{
+    if(await askConfirm('¿Eliminar este cliente? (sus pedidos y facturas anteriores se conservan)')){
+      pushUndoSnapshot();
       STATE.clientes = STATE.clientes.filter(c=>c.id!==data.id);
       persist(); closeModal(); showToast('Cliente eliminado');
     }
@@ -1614,6 +2139,7 @@ function facturaTotales(items, impuestoPct){
 function renderFacturacion(c){
   const facturas = [...STATE.facturas].sort((a,b)=> b.numero-a.numero);
   c.innerHTML = `
+    <div class="card small" style="margin-bottom:16px;">Generar una factura descuenta el inventario de producto terminado, igual que un Pedido. <strong>Usa uno u otro para la misma venta, no ambos</strong> — si registras el Pedido y además facturas esos mismos productos, el inventario se descontaría dos veces.</div>
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
       <button class="btn btn-primary" id="btn-add-factura">+ Nueva factura</button>
     </div>
@@ -1775,11 +2301,40 @@ function wireFactura(){
     refreshItems(); refreshTotales();
   };
 
+  // Selector "generar desde pedido existente" (solo aparece al crear una factura nueva)
+  const selPedido = document.getElementById('f-desde-pedido');
+  if(selPedido){
+    selPedido.onchange = ()=>{
+      const pedido = STATE.ventas.find(v=>v.id===selPedido.value);
+      if(!pedido){ return; } // volvió a "factura manual" — deja los ítems como estén
+      FACTURA_DRAFT_ITEMS = pedido.items.map(it=>{
+        let nombre='—'; allVariantesFlat().forEach(({producto,variante})=>{ if(variante.id===it.varianteId) nombre=producto.nombre+' — '+variante.nombre; });
+        return {varianteId:it.varianteId, nombre, cantidad:it.cantidad, precioUnit:it.precioUnit, descuento:0};
+      });
+      document.getElementById('f-cliente').value = pedido.clienteId||'';
+      document.getElementById('f-cliente-nuevo').value = '';
+      document.getElementById('f-anticipo').value = pedido.anticipo||0;
+      refreshItems(); refreshTotales();
+      showToast('Productos y cliente cargados desde el pedido');
+    };
+  }
+
   const del = document.getElementById('m-del');
-  if(del) del.onclick = ()=>{
-    if(confirm('¿Eliminar esta factura? (no revierte el pedido asociado)')){
+  if(del) del.onclick = async ()=>{
+    const vinculada = !!data.pedidoId;
+    const msg = vinculada
+      ? '¿Eliminar esta factura? Como está vinculada a un pedido, el inventario NO se toca (sigue perteneciendo al pedido) — solo se desvincula.'
+      : '¿Eliminar esta factura? Se devolverá el inventario descontado.';
+    if(await askConfirm(msg)){
+      pushUndoSnapshot();
+      if(vinculada){
+        const pedido = STATE.ventas.find(v=>v.id===data.pedidoId);
+        if(pedido) pedido.facturaId = null;
+      } else {
+        data.items.forEach(it=>{ STATE.inventarioProductoTerminado[it.varianteId] = (STATE.inventarioProductoTerminado[it.varianteId]||0) + it.cantidad; });
+      }
       STATE.facturas = STATE.facturas.filter(f=>f.id!==data.id);
-      persist(); closeModal(); showToast('Factura eliminada');
+      persist(); closeModal(); showToast(vinculada? 'Factura eliminada — pedido desvinculado' : 'Factura eliminada — inventario devuelto');
     }
   };
 
@@ -1795,8 +2350,9 @@ function wireFactura(){
       clienteId = nuevo.id;
       logChange(`Cliente nuevo creado desde una factura: "${nuevo.nombre}".`);
     }
+    const pedidoId = selPedido ? (selPedido.value || null) : (data? data.pedidoId : null);
     const val = {
-      clienteId,
+      clienteId, pedidoId,
       fecha: document.getElementById('f-fecha').value || todayISO(),
       fechaEntrega: document.getElementById('f-fentrega').value,
       formaPago: document.getElementById('f-pago').value,
@@ -1805,14 +2361,31 @@ function wireFactura(){
       items: FACTURA_DRAFT_ITEMS.map(it=>({...it})),
     };
     if(data){
-      Object.assign(data, val);
+      // editar factura existente: solo se mueve inventario si NUNCA estuvo vinculada a un pedido
+      if(!data.pedidoId){
+        data.items.forEach(it=>{ STATE.inventarioProductoTerminado[it.varianteId] = (STATE.inventarioProductoTerminado[it.varianteId]||0) + it.cantidad; });
+        Object.assign(data, val);
+        data.items.forEach(it=>{ STATE.inventarioProductoTerminado[it.varianteId] = (STATE.inventarioProductoTerminado[it.varianteId]||0) - it.cantidad; });
+      } else {
+        Object.assign(data, val);
+      }
       logChange(`Factura #${data.numero} actualizada.`);
       showToast('Factura actualizada');
     } else {
       const numero = STATE.config.facturaCounter++;
-      STATE.facturas.push({id:uid('f'), numero, ...val});
+      const nuevaFactura = {id:uid('f'), numero, ...val};
+      if(pedidoId){
+        // viene de un pedido ya registrado: el inventario ya se descontó ahí, no se toca de nuevo
+        const pedido = STATE.ventas.find(v=>v.id===pedidoId);
+        if(pedido) pedido.facturaId = nuevaFactura.id;
+      } else {
+        val.items.forEach(it=>{ STATE.inventarioProductoTerminado[it.varianteId] = (STATE.inventarioProductoTerminado[it.varianteId]||0) - it.cantidad; });
+      }
+      STATE.facturas.push(nuevaFactura);
       const clNombre = clienteById(clienteId)?.nombre||'cliente';
-      logChange(`Factura #${numero} generada para "${clNombre}".`);
+      logChange(pedidoId
+        ? `Factura #${numero} generada para "${clNombre}" desde un pedido existente — inventario no duplicado.`
+        : `Factura #${numero} generada para "${clNombre}" — inventario descontado.`);
       showToast('Factura generada');
     }
     persist(); closeModal();
@@ -1824,6 +2397,20 @@ function wireFactura(){
   document.getElementById('root').innerHTML = `<div style="padding:40px;font-family:sans-serif;color:#6b117b;">Cargando Galú Pastelería…</div>`;
   await loadState();
   render();
+
+  // Service worker mínimo (permite "Instalar app" en Android/Chrome; en iPhone no se necesita).
+  if('serviceWorker' in navigator){
+    try{
+      const swCode = `
+        self.addEventListener('install', ()=> self.skipWaiting());
+        self.addEventListener('activate', ()=> self.clients.claim());
+        self.addEventListener('fetch', (e)=>{ e.respondWith(fetch(e.request).catch(()=> caches.match(e.request))); });
+      `;
+      const blob = new Blob([swCode], {type:'application/javascript'});
+      const swUrl = URL.createObjectURL(blob);
+      await navigator.serviceWorker.register(swUrl);
+    }catch(e){ console.warn('No se pudo registrar el service worker (no afecta el funcionamiento normal).', e); }
+  }
 })();
 </script>
 </body>
